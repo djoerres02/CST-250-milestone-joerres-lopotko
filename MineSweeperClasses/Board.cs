@@ -42,13 +42,13 @@ namespace MineSweeperClasses
             StartTime = DateTime.Now;
         }
 
-        //used when player selects a cell and chooses to play the rewards
+        //used when player selects a cell and chooses to play the rewards(implement later)
         public void UseSpecialBonus()
         {
 
         }
 
-        //use after game is over to calculate final score
+        //use after game is over to calculate final score(Implemented later)
         public int DetermineFinalScore()
         {
             return 0;//placeholder
@@ -74,6 +74,13 @@ namespace MineSweeperClasses
                 for (int j = 0; j < columns; j++)
                 {
                     int bombCount = 0;
+                    //cell is bomb
+                    if (Cells[i, j].IsBomb)
+                    {
+                        bombCount = 9;
+                        Cells[i, j].NumberOfBombNeighbors = 9;
+                        break;
+                    }
                     //count bombs above cell
                     for(int k = j-1; k <= j+1; k++)
                     {
@@ -113,6 +120,8 @@ namespace MineSweeperClasses
                             bombCount++;
                         }
                     }
+                    //Finally, set cells property will appropriate amount of bombs
+                    Cells[i,j].NumberOfBombNeighbors = bombCount;
                 }
             }
         }
@@ -150,7 +159,7 @@ namespace MineSweeperClasses
             RewardsRemaining = 1;
         }
 
-        //use every turn to determine the current game state
+        //use every turn to determine the current game state(Implemented later)
         public GameStatus DetermineGameState()
         {
             return GameStatus.inProgress;//placeholder
