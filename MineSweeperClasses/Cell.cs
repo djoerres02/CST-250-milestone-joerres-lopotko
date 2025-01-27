@@ -14,14 +14,15 @@ namespace MineSweeperClasses
         public bool IsVisited { get; set; }
         public bool IsBomb { get; set; }
         public bool IsFlagged { get; set; }
-        public bool HasSpecialReward {  get; set; } //use hint ability
-        
+        public int NumberOfBombNeighbors { get; set; }
+        public bool HasSpecialReward { get; set; } //use hint ability
 
-        //Parameterized Constructor
-        public Cell(int row, int column)
+
+        //Default Constructor
+        public Cell()
         {
-            Row = row;
-            Column = column;
+            Row = -1;
+            Column = -1;
             IsVisited = false;
             IsBomb = false;
             IsFlagged = false;
