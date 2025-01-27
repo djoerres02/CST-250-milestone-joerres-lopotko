@@ -80,49 +80,29 @@ namespace MineSweeperClasses
                     {
                         bombCount = 9;
                         Cells[i, j].NumberOfBombNeighbors = 9;
-                        break;
+                        continue;
                     }
-                    //count bombs above cell
-                    for (int k = j - 1; k <= j + 1; k++)
+                    //if the cell isn't a bomb, we're going to search the 8 surrounding cells and count the bombs in each using nested forloops
+                    for (int iOffset = -1; iOffset <= 1; iOffset++)
                     {
-                        if (IsCellOnBoard(i - 1, k))
+                        for (int jOffset = -1; jOffset <= 1; jOffset++)
                         {
-                            if (Cells[i - 1, k].IsBomb)
+                            //exclude the cell itself
+                            if (iOffset == 0 && jOffset == 0)
+                            {
+                                continue;
+                            }
+                            //now offset the current index and check if it's a bomb
+                            int iCheck = i + iOffset;
+                            int jCheck = j + jOffset;
+                            if(IsCellOnBoard(iCheck, jCheck) && Cells[iCheck, jCheck].IsBomb)
                             {
                                 bombCount++;
                             }
                         }
                     }
-
-                    //count bombs below cell
-                    for (int k = j - 1; k <= j + 1; k++)
-                    {
-                        if (IsCellOnBoard(i + 1, k))
-                        {
-                            if (Cells[i + 1, k].IsBomb)
-                            {
-                                bombCount++;
-                            }
-                        }
-                    }
-
-                    //count bombs to the side
-                    if (IsCellOnBoard(i, j - 1))
-                    {
-                        if (Cells[i, j].IsBomb)
-                        {
-                            bombCount++;
-                        }
-                    }
-                    if (IsCellOnBoard(i, j + 1))
-                    {
-                        if (Cells[i, j].IsBomb)
-                        {
-                            bombCount++;
-                        }
-                    }
-                    //Finally, set cells property will appropriate amount of bombs
-                    Cells[i, j].NumberOfBombNeighbors = bombCount;
+                    //set the bomb neighbors
+                    Cells[i,j].NumberOfBombNeighbors = bombCount;
                 }
             }
         }
@@ -143,6 +123,8 @@ namespace MineSweeperClasses
                 for (int j = 0; j < columns; j++)
                 {
                     int assignment = random.Next(1, bound);
+                    //assign that array index with a cell at the given location
+                    Cells[i, j] = new Cell();
                     Cells[i, j].Row = i;
                     Cells[i, j].Column = j;
                     if (assignment == 3)
