@@ -4,7 +4,8 @@
  * 1/26/25
  * Completed Together
  */
-using MineSweeperClasses;
+using MineSweeperClasses.Models;
+using MineSweeperClasses.Services.BusinessLogicLayer;
 using System;
 
 class Program

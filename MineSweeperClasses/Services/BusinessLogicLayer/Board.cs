@@ -4,6 +4,7 @@
  * 1/26/25
  * Completed Together
  */
+using MineSweeperClasses.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -11,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineSweeperClasses
+namespace MineSweeperClasses.Services.BusinessLogicLayer
 {
     public class Board
     {
@@ -81,7 +82,7 @@ namespace MineSweeperClasses
         /// <returns></returns>
         private bool IsCellOnBoard(int row, int col)
         {
-            if ((row >= 0 && row < Size) && (col >= 0 && col < Size))
+            if (row >= 0 && row < Size && col >= 0 && col < Size)
                 return true;
             else
                 return false;
@@ -120,14 +121,14 @@ namespace MineSweeperClasses
                             // Now offset the current index and check if it's a bomb
                             int iCheck = i + iOffset;
                             int jCheck = j + jOffset;
-                            if(IsCellOnBoard(iCheck, jCheck) && Cells[iCheck, jCheck].IsBomb)
+                            if (IsCellOnBoard(iCheck, jCheck) && Cells[iCheck, jCheck].IsBomb)
                             {
                                 bombCount++;
                             }
                         }
                     }
                     // Set the bomb neighbors
-                    Cells[i,j].NumberOfBombNeighbors = bombCount;
+                    Cells[i, j].NumberOfBombNeighbors = bombCount;
                 }
             }
         }
