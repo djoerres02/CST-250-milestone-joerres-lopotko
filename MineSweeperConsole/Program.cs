@@ -5,14 +5,15 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Print welcome message
         Console.WriteLine("Hello, welcome to Minesweeper!");
 
-        // answer key with 10x10 board with 1 diffculty
+        // Answer key with 10x10 board with 1 difficulty
         Board board = new Board(10, 1);
         Console.WriteLine("Here is the answer key for the first board(1 difficulty):");
         PrintAnswerKey(board);
 
-        // answer key with 15x15 board with 3 difficulty
+        // Answer key with 15x15 board with 3 difficulty
         board = new Board(15, 3);
         Console.WriteLine("\nHere is the answer key for the second board(3 difficulty):");
         PrintAnswerKey(board);
@@ -39,7 +40,7 @@ class Program
         }
         Console.WriteLine();
 
-        //now to print the contents of the board we will loop through the cell list writing the contents of the cells in a row before skipping to new line
+        // To print the contents of the board we will loop through the cell list writing the contents of the cells in a row before skipping to new line
         for (int row = 0; row < size; row++)
         {
             // Print row label number
@@ -48,43 +49,43 @@ class Program
             for (int col = 0; col < size; col++)
             {
                 // Display the content of each cell
-                // print bomb in red
+                // Print bomb in red
                 if (boardCells[row, col].IsBomb)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write($"{"B",3}");
                 }
-                // print 1 bomb count in cyan
+                // Print 1 bomb count in cyan
                 else if (boardCells[row, col].NumberOfBombNeighbors == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan; 
                     Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
                 }
-                // print 2 bomb count in green
+                // Print 2 bomb count in green
                 else if (boardCells[row, col].NumberOfBombNeighbors == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
                 }
-                //print 3 bomb count in magenta
+                // Print 3 bomb count in magenta
                 else if (boardCells[row, col].NumberOfBombNeighbors == 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
                 }
-                //print 4 bomb count in dark yellow
+                // Print 4 bomb count in dark yellow
                 else if (boardCells[row, col].NumberOfBombNeighbors == 4)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
                 }
-                //print 5 bomb count in dark magenta
+                // Print 5 bomb count in dark magenta
                 else if (boardCells[row, col].NumberOfBombNeighbors >= 5)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
                 }
-                //print empty cells in white
+                // Print empty cells in white
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.White;
