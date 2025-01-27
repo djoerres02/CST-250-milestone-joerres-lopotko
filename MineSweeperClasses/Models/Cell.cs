@@ -1,10 +1,16 @@
-﻿using System;
+﻿/* Joseph Lopotko & Dylan Joerres
+ * CST-250
+ * Milestone 1
+ * 1/26/25
+ * Completed Together
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineSweeperClasses
+namespace MineSweeperClasses.Models
 {
     public class Cell
     {
@@ -15,10 +21,12 @@ namespace MineSweeperClasses
         public bool IsBomb { get; set; }
         public bool IsFlagged { get; set; }
         public int NumberOfBombNeighbors { get; set; }
-        public bool HasSpecialReward {  get; set; } //use hint ability
-        
+        public bool HasSpecialReward { get; set; } // Use hint ability
 
-        //Default Constructor
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Cell()
         {
             Row = -1;
