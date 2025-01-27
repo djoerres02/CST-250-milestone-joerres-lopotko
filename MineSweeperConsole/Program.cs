@@ -10,6 +10,7 @@ using System;
 
 class Program
 {
+    //main method
     static void Main(string[] args)
     {
         // Print welcome message
@@ -26,6 +27,7 @@ class Program
         PrintAnswerKey(board);
     }
 
+    //Print board to console
     static void PrintAnswerKey(Board board)
     {
         Cell[,] boardCells = board.Cells;
