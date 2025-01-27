@@ -1,4 +1,9 @@
-﻿using MineSweeperClasses;
+﻿/* Joseph Lopotko & Dylan Joerres
+ * CST-250
+ * Milestone 1
+ * Completed Together
+ */
+using MineSweeperClasses;
 using System;
 
 class Program

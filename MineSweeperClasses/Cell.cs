@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Joseph Lopotko & Dylan Joerres
+ * CST-250
+ * Milestone 1
+ * Completed Together
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
