@@ -12,8 +12,8 @@ class Program
         Console.WriteLine("Here is the answer key for the first board(1 difficulty):");
         PrintAnswerKey(board);
 
-        // answer key with 15x15 board
-        board = new Board(15, 3); // Difficulty adjusted for integer handling
+        // answer key with 15x15 board with 3 difficulty
+        board = new Board(15, 3);
         Console.WriteLine("\nHere is the answer key for the second board(3 difficulty):");
         PrintAnswerKey(board);
     }
