@@ -35,81 +35,89 @@ class Program
         Console.Write("    ");
         for (int col = 0; col < size; col++)
         {
-            Console.Write($"{col,3}"); // {col,3} allows for numbers to be more evenly spaced
+            Console.Write($"{col,2}  "); // {col,2} allows for better spacing
         }
         Console.WriteLine();
 
-        // Print top line
-        Console.Write("----");
-        for (int i = 0; i < size*3; i++)
+        // Print the top line
+        Console.Write("   ");
+        for (int i = 0; i < size; i++)
         {
-            Console.Write("-");
+            Console.Write("+---");
         }
-        Console.WriteLine();
+        Console.WriteLine("+");
 
-        // To print the contents of the board we will loop through the cell list writing the contents of the cells in a row before skipping to new line
+        // To print the contents of the board, we will loop through the cell list writing the contents of the cells in a row before skipping to a new line
         for (int row = 0; row < size; row++)
         {
             // Print row label number
-            Console.Write($"{row,3}|"); // allows numbers to be lined up
+            Console.Write($"{row,2} "); // Allows numbers to be lined up
 
             for (int col = 0; col < size; col++)
             {
-                // Display the content of each cell
-                // Print bomb in red
+                // Reset color before printing the vertical bar to ensure it is not colored
+                Console.ResetColor();
+                Console.Write("| ");
+
+                // Determine and display the content of each cell
+                string cellContent;
                 if (boardCells[row, col].IsBomb)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write($"{"B",3}");
+                    cellContent = "B"; // Bomb cell
                 }
                 // Print 1 bomb count in cyan
                 else if (boardCells[row, col].NumberOfBombNeighbors == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan; 
-                    Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    cellContent = boardCells[row, col].NumberOfBombNeighbors.ToString();
                 }
                 // Print 2 bomb count in green
                 else if (boardCells[row, col].NumberOfBombNeighbors == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
+                    cellContent = boardCells[row, col].NumberOfBombNeighbors.ToString();
                 }
                 // Print 3 bomb count in magenta
                 else if (boardCells[row, col].NumberOfBombNeighbors == 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
+                    cellContent = boardCells[row, col].NumberOfBombNeighbors.ToString();
                 }
                 // Print 4 bomb count in dark yellow
                 else if (boardCells[row, col].NumberOfBombNeighbors == 4)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
+                    cellContent = boardCells[row, col].NumberOfBombNeighbors.ToString();
                 }
-                // Print 5 bomb count in dark magenta
+                // Print 5 or more bomb count in dark magenta
                 else if (boardCells[row, col].NumberOfBombNeighbors >= 5)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Console.Write($"{boardCells[row, col].NumberOfBombNeighbors,3}");
+                    cellContent = boardCells[row, col].NumberOfBombNeighbors.ToString();
                 }
                 // Print empty cells in white
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write($"{"·",3}");
+                    cellContent = "·"; // Empty cell indicator
                 }
 
-                // Reset color
-                Console.ResetColor();
+                // Print the cell content
+                Console.Write($"{cellContent,1} ");
             }
-            Console.WriteLine();
+
+            // Reset color and print the final vertical border for the row
+            Console.ResetColor();
+            Console.WriteLine("|");
+
+            // Print the horizontal line below the row
+            Console.Write("   ");
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write("+---");
+            }
+            Console.WriteLine("+");
         }
-        // Print bottom line
-        Console.Write("----");
-        for (int i = 0; i < size * 3; i++)
-        {
-            Console.Write("-");
-        }
-        Console.WriteLine();
     }
 }
