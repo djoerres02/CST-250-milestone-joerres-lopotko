@@ -254,7 +254,8 @@ while (!GameOver)
     /// <param name="board"></param>
     static void PrintBoard(Board board)
     {
-        Cell[,] boardCells = board.Cells;
+        BoardLogic boardLogic = new BoardLogic(board);
+        Cell[,] boardCells =boardLogic.board.Cells;
         int size = board.Size;
 
         // Print column numbers
