@@ -5,6 +5,7 @@
  * Completed Together
  */
 using MineSweeperClasses.Models;
+using MineSweeperClasses.Services.BusinessLogicLayer;
 using System;
 
 class Program
@@ -29,7 +30,8 @@ class Program
     //Print board to console
     static void PrintAnswerKey(Board board)
     {
-        Cell[,] boardCells = board.Cells;
+        BoardLogic boardLogic = new BoardLogic(board);
+        Cell[,] boardCells =boardLogic.board.Cells;
         int size = board.Size;
 
         // Print column numbers
