@@ -41,6 +41,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// </summary>
         public void UseSpecialBonus()
         {
+            board.RewardsRemaining = 0;
             int rows = board.Cells.GetLength(0);
             int columns = board.Cells.GetLength(1);
             //walkthrough cells and if a bomb has a visited neighbor, flag it
