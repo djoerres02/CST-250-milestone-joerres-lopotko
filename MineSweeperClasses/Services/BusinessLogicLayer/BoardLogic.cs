@@ -41,7 +41,30 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// </summary>
         public void UseSpecialBonus()
         {
-            
+            int rows = board.Cells.GetLength(0);
+            int columns = board.Cells.GetLength(1);
+            //walkthrough cells and if a bomb has a visited neighbor, flag it
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (board.Cells[i, j].IsBomb) //check neighbors if cell is bomb
+                    {
+                        //create two arrays that will hold values that will be added to the bombs row and collumn to access it's neighbprs
+                        int[] offsetCol = { 0, 1, 1, 1, 0, -1, -1, -1 };
+                        int[] offsetRow = { -1, -1, 0, 1, 1, 1, 0, -1 };
+
+                        //walkthrough all cells
+                        for (int k = 0; k < offsetCol.Length; k++)
+                        {
+                            if ((board.Cells[i + offsetRow[k], j + offsetCol[k]].IsVisited) && (board.Cells[i + offsetRow[k], j + offsetCol[k]].IsBomb == false))//checks if the current neighbor cell is visited
+                            {
+                                board.Cells[i, j].IsFlagged = true;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
