@@ -5,7 +5,6 @@
  * Completed Together
  */
 using MineSweeperClasses.Models;
-using MineSweeperClasses.Services.BusinessLogicLayer;
 using System;
 
 class Program

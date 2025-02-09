@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-using static MineSweeperClasses.Services.BusinessLogicLayer.Board;
+using static MineSweeperClasses.Models.Board;
 
 namespace MineSweeperClasses.Services.BusinessLogicLayer
 {

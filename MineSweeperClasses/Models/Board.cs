@@ -4,7 +4,6 @@
  * 1/26/25
  * Completed Together
  */
-using MineSweeperClasses.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -12,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineSweeperClasses.Services.BusinessLogicLayer
+namespace MineSweeperClasses.Models
 {
     public class Board
     {
@@ -41,6 +40,6 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             Difficulty = difficulty;
             Cells = new Cell[size, size];
             RewardsRemaining = 1;
-        }  
+        }
     }
 }
