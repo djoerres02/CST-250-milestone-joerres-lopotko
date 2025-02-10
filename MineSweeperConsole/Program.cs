@@ -32,13 +32,15 @@ class Program
 
         while (!GameOver)
         {
+            int row;
+            int col;
             // Try for valid row input
             try
             {
                 // Ask user for row
                 Console.Write("Enter the row number: ");
                 // Record row input
-                int row = int.Parse(Console.ReadLine());
+                row = int.Parse(Console.ReadLine());
                 // Check if row is in range
                 if (row < 0 || row >= board.Size)
                 {
@@ -48,25 +50,57 @@ class Program
             // Catch any invalid input
             catch (Exception ex)
             {
+                // Inform user input is invalid, try again.
                 Console.Write($"Invalid input: {ex.Message}. Please try again.");
                 continue; // Restart prompt
             }
 
 
-            // Try for valid col input
+            // Try for valid column input
             try
             {
+                // Ask user for column
                 Console.WriteLine("Enter the column number:");
-                int col = int.Parse(Console.ReadLine());
+                // Record column input
+                col = int.Parse(Console.ReadLine());
+                // Check if column is in range
                 if (col < 0 || col >= board.Size)
                 {
+                    // Inform user
                     throw new ArgumentOutOfRangeException(nameof(col), $"Column must be between 0 and {board.Size - 1}.");
                 }
             }
+            // Catch column exceptions
             catch (Exception ex)
             {
+                // Inform user input is invalid, try again
                 Console.WriteLine($"Invalid input: {ex.Message}. Please try again.");
                 continue;  // Restart the loop
+            }
+
+            // Try for valid move input
+            try
+            {
+                // Prompt user for move type
+                Console.WriteLine("Enter your move type: 'visit', 'flag', or 'use reward':");
+                // Record move type, ensuring letters are converted to lowercase and white space is trimmed
+                string moveType = Console.ReadLine().Trim().ToLower();
+
+                // Check if movetype matches visit, flag, or use reward
+                if (moveType != "visit" && moveType != "flag" && moveType != "use reward")
+                {
+                    // 
+                    throw new ArgumentException("Move type must be 'visit', 'flag', or 'use reward'.");
+                }
+
+                // Process the move
+                Console.WriteLine($"Move accepted: {moveType} at ({row}, {col}).");
+            }
+            // Catch movetype exceptions
+            catch (Exception ex)
+            {
+                // Inform user input is invalid, try again
+                Console.WriteLine($"Invalid input: {ex.Message}. Please try again.");
             }
         }
 
