@@ -126,6 +126,14 @@ class Program
                     gameBoard.Cells[row, col].IsVisited = true;
                 }
             }
+            // If moveType is a flag
+            else if (moveType == "flag")
+            {
+                // Toggle the flag status for the cell
+                gameBoard.Cells[row, col].IsFlagged = !gameBoard.Cells[row, col].IsFlagged;
+                Console.WriteLine(gameBoard.Cells[row, col].IsFlagged ? "Cell flagged." : "Cell unflagged.");
+            }
+            }
 
         }
 
