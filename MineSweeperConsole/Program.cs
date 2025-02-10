@@ -26,11 +26,18 @@ class Program
         Console.WriteLine("\nHere is the answer key for the second board(3 difficulty):");
         PrintAnswerKey(board);
 
+        // Create a new board for gameplay
         Board gameBoard = new Board(15, 3);
+
+        // Instantiate gameLogic
+        BoardLogic gameLogic = new BoardLogic(gameBoard);
 
         // Bool variable for game over, allow for looping of game
         bool GameOver = false;
 
+        
+
+        // Loop for running game
         while (!GameOver)
         {
             int row;
@@ -203,20 +210,42 @@ class Program
                     Console.ResetColor();
 
                     // Use up reward
-                    if (gameBoard.RewardsRemaining > 0)
-                    {
-                       gameBoard.RewardsRemaining--;
-                    }
+                        gameBoard.RewardsRemaining--;
                     
+
                 }
+                // No rewards, inform user to try again
                 else
                 {
                     Console.WriteLine("No rewards, try again");
                 }
             }
 
-        }
+            // Determine if the game is over
+            Board.GameStatus state = gameLogic.DetermineGameState();
 
+            // If user won the game
+            if (state == Board.GameStatus.Won)
+            {
+                // Give celebratory message
+                Console.WriteLine("Congratulations! You've won the game!");
+                // Set GameOver to true, breaking gameplay loop
+                GameOver = true;
+            }
+            // If user lost the game
+            else if (state == Board.GameStatus.Lost)
+            {
+                // Give game over message
+                Console.WriteLine("Sorry, you hit a bomb. Game over!");
+                // Set GameOver to true, breaking gameplay loop
+                GameOver = true;
+            }
+            else
+            {
+                // Print the grid after each move
+                PrintBoard(gameBoard);
+            }
+        }
     }
 
 
