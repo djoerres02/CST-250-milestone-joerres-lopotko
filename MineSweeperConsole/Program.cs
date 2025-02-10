@@ -1,6 +1,6 @@
 ﻿/* Joseph Lopotko & Dylan Joerres
  * CST-250
- * Milestone 1
+ * Milestone 2
  * 1/26/25
  * Completed Together
  */
@@ -15,7 +15,7 @@ using System;
         // Print welcome message
         Console.WriteLine("Hello, welcome to Minesweeper!");
 
-        // Create a new board for gameplay (Sized 15, difficulty 1)
+        // Create a new board for gameplay (Sized 4, difficulty 1)
         Board gameBoard = new Board(4, 1);
 
         // Instantiate gameLogic
@@ -274,7 +274,7 @@ while (!GameOver)
         Console.WriteLine("+");
 
         // To print the contents of the board during game play, we will loop through the cell list.
-        // For unvisited cells (unless flagged), display a "?" symbol.
+        // For unvisited cells (unless flagged), display a " " symbol.
         for (int row = 0; row < size; row++)
         {
             // Print row label number
