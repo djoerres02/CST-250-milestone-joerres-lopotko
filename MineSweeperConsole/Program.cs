@@ -51,6 +51,23 @@ class Program
                 Console.Write($"Invalid input: {ex.Message}. Please try again.");
                 continue; // Restart prompt
             }
+
+
+            // Try for valid col input
+            try
+            {
+                Console.WriteLine("Enter the column number:");
+                int col = int.Parse(Console.ReadLine());
+                if (col < 0 || col >= board.Size)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(col), $"Column must be between 0 and {board.Size - 1}.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Invalid input: {ex.Message}. Please try again.");
+                continue;  // Restart the loop
+            }
         }
 
 
