@@ -26,6 +26,7 @@ class Program
         Console.WriteLine("\nHere is the answer key for the second board(3 difficulty):");
         PrintAnswerKey(board);
 
+        Board gameBoard = new Board(15, 3);
 
         // Bool variable for game over, allow for looping of game
         bool GameOver = false;
@@ -44,7 +45,7 @@ class Program
                 // Check if row is in range
                 if (row < 0 || row >= board.Size)
                 {
-                    throw new ArgumentOutOfRangeException($"Row must be between 0 and {board.Size - 1}.");
+                    throw new ArgumentOutOfRangeException($"Row must be between 0 and {gameBoard.Size - 1}.");
                 }
             }
             // Catch any invalid input
@@ -67,7 +68,7 @@ class Program
                 if (col < 0 || col >= board.Size)
                 {
                     // Inform user
-                    throw new ArgumentOutOfRangeException(nameof(col), $"Column must be between 0 and {board.Size - 1}.");
+                    throw new ArgumentOutOfRangeException(nameof(col), $"Column must be between 0 and {gameBoard.Size - 1}.");
                 }
             }
             // Catch column exceptions
@@ -79,17 +80,18 @@ class Program
             }
 
             // Try for valid move input
+            string moveType = "";
             try
             {
                 // Prompt user for move type
                 Console.WriteLine("Enter your move type: 'visit', 'flag', or 'use reward':");
                 // Record move type, ensuring letters are converted to lowercase and white space is trimmed
-                string moveType = Console.ReadLine().Trim().ToLower();
+                moveType = Console.ReadLine().Trim().ToLower();
 
                 // Check if movetype matches visit, flag, or use reward
                 if (moveType != "visit" && moveType != "flag" && moveType != "use reward")
                 {
-                    // 
+                    // Inform user input is invalid, try again
                     throw new ArgumentException("Move type must be 'visit', 'flag', or 'use reward'.");
                 }
 
@@ -101,7 +103,30 @@ class Program
             {
                 // Inform user input is invalid, try again
                 Console.WriteLine($"Invalid input: {ex.Message}. Please try again.");
+                continue;
             }
+
+            // Process the move based on the move type entered
+            if (moveType == "visit")
+            {
+                // Check if the cell is already visited
+                if (gameBoard.Cells[row, col].IsVisited)
+                {
+                    Console.WriteLine("This cell has already been visited.");
+                }
+                // Check if cell is flagged
+                else if (gameBoard.Cells[row, col].IsFlagged)
+                {
+                    Console.WriteLine("This cell is flagged. Unflag it before visiting.");
+                }
+                // If it's not visited or flagged
+                else
+                {
+                    // Mark the cell as visited
+                    gameBoard.Cells[row, col].IsVisited = true;
+                }
+            }
+
         }
 
 
