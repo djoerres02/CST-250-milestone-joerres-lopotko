@@ -134,9 +134,90 @@ class Program
                 // If flagging a flagged cell, unflag the cell
                 Console.WriteLine(gameBoard.Cells[row, col].IsFlagged ? "Cell flagged." : "Cell unflagged.");
             }
+            // If moveType is a reward
+            else if (moveType == "use reward")
+            {
+                // Use special reward to peek at a cell
+                if (gameBoard.RewardsRemaining > 0)
+                {
+                    // Inform user what cell is being peeked
+                    Console.WriteLine($"Peeking at cell ({row}, {col}):");
+
+                    // Get the cell to peek at
+                    Cell peekCell = gameBoard.Cells[row, col];
+
+                    // If cell is a bomb, display so accordingly
+                    if (peekCell.IsBomb)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("B (Bomb)");
+                    }
+                    // If cell has a reward, display reward
+                    else if (peekCell.HasSpecialReward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("R (Special Reward)");
+                    }
+                    // If cell has bomb neighbors, display how many
+                    else if (peekCell.NumberOfBombNeighbors > 0)
+                    {
+                        // Choose color based on bomb neighbor count
+
+                        // 1 bomb neighbor
+                        if (peekCell.NumberOfBombNeighbors == 1)
+                        {
+
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                        }
+                        // 2 bomb neighbors
+                        else if (peekCell.NumberOfBombNeighbors == 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        // 3 bomb neighbors
+                        else if (peekCell.NumberOfBombNeighbors == 3)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                        }
+                        // 4 bomb neighbors
+                        else if (peekCell.NumberOfBombNeighbors == 4)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        }
+                        // 5 bomb neighbors
+                        else if (peekCell.NumberOfBombNeighbors >= 5)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        }
+
+                        // Print # of bomb neighbors
+                        Console.WriteLine(peekCell.NumberOfBombNeighbors.ToString());
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("· (Empty)");
+                    }
+
+                    // Reset console color
+                    Console.ResetColor();
+
+                    // Use up reward
+                    if (gameBoard.RewardsRemaining > 0)
+                    {
+                       gameBoard.RewardsRemaining--;
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("No rewards, try again");
+                }
             }
 
         }
+
+    }
 
 
         //Print answer key board to console
@@ -237,4 +318,3 @@ class Program
             }
         }
     }
-}
