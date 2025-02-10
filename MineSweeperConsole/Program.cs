@@ -5,6 +5,7 @@
  * Completed Together
  */
 using MineSweeperClasses.Models;
+using MineSweeperClasses.Services.BusinessLogicLayer;
 using System;
 
 class Program
@@ -26,7 +27,20 @@ class Program
         PrintAnswerKey(board);
     }
 
-    //Print board to console
+    // Bool variable for game over, allow for looping of game
+    bool GameOver = false;
+
+    while(!gameOver)
+        {
+            // Ask user for row number
+            int row;
+            
+        
+        }
+
+
+
+    //Print answer key board to console
     static void PrintAnswerKey(Board board)
     {
 
