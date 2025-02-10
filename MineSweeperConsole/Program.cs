@@ -15,16 +15,6 @@ class Program
         // Print welcome message
         Console.WriteLine("Hello, welcome to Minesweeper!");
 
-        Console.Write("Enter a row number");
-        try
-        {
-            int.Parse(Console.ReadLine());
-        }
-        catch
-        {
-
-        }
-
         // Answer key with 10x10 board with 1 difficulty
         Board board = new Board(10, 1);
         Console.WriteLine("Here is the answer key for the first board(1 difficulty):");
