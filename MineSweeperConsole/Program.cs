@@ -129,8 +129,9 @@ class Program
             // If moveType is a flag
             else if (moveType == "flag")
             {
-                // Toggle the flag status for the cell
+                // Allow for enabling/disabling the flag status for the cell
                 gameBoard.Cells[row, col].IsFlagged = !gameBoard.Cells[row, col].IsFlagged;
+                // If flagging a flagged cell, unflag the cell
                 Console.WriteLine(gameBoard.Cells[row, col].IsFlagged ? "Cell flagged." : "Cell unflagged.");
             }
             }
