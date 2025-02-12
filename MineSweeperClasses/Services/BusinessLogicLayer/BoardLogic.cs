@@ -58,9 +58,12 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                         //walkthrough all cells
                         for (int k = 0; k < offsetCol.Length; k++)
                         {
-                            if ((board.Cells[i + offsetRow[k], j + offsetCol[k]].IsVisited) && (board.Cells[i + offsetRow[k], j + offsetCol[k]].IsBomb == false))//checks if the current neighbor cell is visited
+                            if (IsCellOnBoard(i + offsetRow[k], j + offsetCol[k]))
                             {
-                                board.Cells[i, j].IsFlagged = true;
+                                if ((board.Cells[i + offsetRow[k], j + offsetCol[k]].IsVisited) && (board.Cells[i + offsetRow[k], j + offsetCol[k]].IsBomb == false))//checks if the current neighbor cell is visited
+                                {
+                                    board.Cells[i, j].IsFlagged = true;
+                                }
                             }
                         }
                     }
