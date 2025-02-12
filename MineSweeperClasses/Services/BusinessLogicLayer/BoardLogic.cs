@@ -6,32 +6,40 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using static MineSweeperClasses.Models.Board;
 
 namespace MineSweeperClasses.Services.BusinessLogicLayer
 {
     public class BoardLogic
     {
+        //Field Variables
+        public Board board { get; set; }
+
+        public BoardLogic(Board board)
+        {
+            this.board = board;
+            InitializeBoard();
+        }
+
         // Instantiate random
         Random random = new Random();
 
         /// <summary>
         /// Initialize the board
         /// </summary>
-        private void InitializeBoard(Board board)
+        private void InitializeBoard()
         {
             // Call Methods
-            SetupBombs(board);
-            SetupRewards(board);
-            CalculateNumberOfBombNeighbors(board);
+            SetupBombs();
+            SetupRewards();
+            CalculateNumberOfBombNeighbors();
             board.StartTime = DateTime.Now;
         }
 
         /// <summary>
         /// Used when player selects a cell and chooses to play the rewards(implement later)
         /// </summary>
-        public Board UseSpecialBonus(Board board)
+        public void UseSpecialBonus()
         {
             board.RewardsRemaining = 0;
             int rows = board.Cells.GetLength(0);
@@ -58,7 +66,6 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                     }
                 }
             }
-            return board;
         }
 
         /// <summary>
@@ -76,7 +83,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// <param name="row"></param>
         /// <param name="col"></param>
         /// <returns></returns>
-        private bool IsCellOnBoard(int row, int col, Board board)
+        private bool IsCellOnBoard(int row, int col)
         {
             if (row >= 0 && row < board.Size && col >= 0 && col < board.Size)
                 return true;
@@ -87,7 +94,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// <summary>
         /// Use during setup to calculate the number of bomb nieghbors for each cell
         /// </summary>
-        private Board CalculateNumberOfBombNeighbors(Board board)
+        private void CalculateNumberOfBombNeighbors()
         {
             int rows = board.Cells.GetLength(0);
             int columns = board.Cells.GetLength(1);
@@ -117,7 +124,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                             // Now offset the current index and check if it's a bomb
                             int iCheck = i + iOffset;
                             int jCheck = j + jOffset;
-                            if (IsCellOnBoard(iCheck, jCheck, board) && board.Cells[iCheck, jCheck].IsBomb)
+                            if (IsCellOnBoard(iCheck, jCheck) && board.Cells[iCheck, jCheck].IsBomb)
                             {
                                 bombCount++;
                             }
@@ -127,13 +134,12 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                     board.Cells[i, j].NumberOfBombNeighbors = bombCount;
                 }
             }
-            return board;
         }
 
         /// <summary>
         /// Use during setup to place bombs on the board
         /// </summary>
-        private Board SetupBombs(Board board)
+        private void SetupBombs()
         {
             // Use difficulty to decide upper bound of random call when deciding bombs
             int bound = 1 + 10 / board.Difficulty;
@@ -158,34 +164,31 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                     }
                 }
             }
-            return board;
         }
 
         /// <summary>
         /// Use during setup to place rewards on the board
         /// </summary>
-        private Board SetupRewards(Board board)
+        private void SetupRewards()
         {
             // User has 1 use of the hint reward
             board.RewardsRemaining = 1;
             int row = random.Next(board.Size);
             int col = random.Next(board.Size);
 
-            board.Cells[row, col].HasSpecialReward = true;//put reward on random cell
-
-            return board;
+            board.Cells[row, col].HasSpecialReward = true;
         }
 
         /// <summary>
         /// Use every turn to determine the current game state(Implemented later)
         /// </summary>
         /// <returns></returns>
-        public GameStatus DetermineGameState(Board board)
+        public GameStatus DetermineGameState()
         {
             //Check for win
             Boolean isWin = true;
             //walkthrough each cell and return loss if bomb cell is visited
-            for(int i = 0; i < board.Size; i++)
+            for (int i = 0; i < board.Size; i++)
             {
                 for (int j = 0; j < board.Size; j++)
                 {
@@ -193,7 +196,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                     {
                         return GameStatus.Lost;
                     }
-                    if ((board.Cells[i,j].IsBomb == false) && (board.Cells[i,j].IsVisited == false))//if none of the cells trigger this if, they've won the game.
+                    if ((board.Cells[i, j].IsBomb == false) && (board.Cells[i, j].IsVisited == false))//if none of the cells trigger this if, they've won the game.
                     {
                         isWin = false;
                     }
