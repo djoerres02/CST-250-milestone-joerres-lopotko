@@ -129,6 +129,11 @@ while (!GameOver)
         {
             // Mark the cell as visited
             gameBoard.Cells[row, col].IsVisited = true;
+            //give the player a use of the reward if found
+            if (gameBoard.Cells[row, col].HasSpecialReward)
+            {
+                gameBoard.RewardsRemaining++;
+            }
         }
     }
     // If moveType is a flag

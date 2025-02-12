@@ -25,10 +25,6 @@ namespace MineSweeperClasses.Models
         public enum GameStatus { InProgress, Won, Lost }
 
 
-        // Instantiate random
-        Random random = new Random();
-
-
         /// <summary>
         /// Parameterized Constructor
         /// </summary>

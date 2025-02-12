@@ -174,8 +174,8 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// </summary>
         private void SetupRewards()
         {
-            // User has 1 use of the hint reward
-            board.RewardsRemaining = 1;
+            // User has 1 use of the hint reward after finding it.
+            board.RewardsRemaining = 0;
             int row = random.Next(board.Size);
             int col = random.Next(board.Size);
 
