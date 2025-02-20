@@ -1,7 +1,7 @@
 ﻿/* Joseph Lopotko & Dylan Joerres
  * CST-250
- * Milestone 1
- * 1/26/25
+ * Milestone 3
+ * 2/20/2025
  * Completed Together
  */
 using System;
