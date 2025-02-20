@@ -129,8 +129,14 @@ while (!GameOver)
         // If it's not visited or flagged
         else
         {
+            //call flood fill on cell if cell is empty
+            if (gameBoard.Cells[row, col].NumberOfBombNeighbors < 1)
+            {
+                gameBoard = gameLogic.FloodFill(gameBoard, row, col);
+            }
             // Mark the cell as visited
             gameBoard.Cells[row, col].IsVisited = true;
+            
             //give the player a use of the reward if found
             if (gameBoard.Cells[row, col].HasSpecialReward)
             {

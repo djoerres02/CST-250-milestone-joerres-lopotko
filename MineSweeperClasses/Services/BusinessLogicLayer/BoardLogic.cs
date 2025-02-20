@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Security;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
@@ -225,58 +226,40 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// <returns></returns>
         public Board FloodFill(Board board, int row, int col)
         {
-            //Declare and initialize
-            //int sleepCount = 25; // milliseconds
-
-            //Change the text color to white
-            Console.ForegroundColor = ConsoleColor.White;
             //Print the current cell to console
-            Console.Write($"Filling at {row}, {col} ");
-            //Pause the program for sleepcount number of milliseconds
-            //Thread.Sleep(sleepCount);
+            //DEBUG:Console.Write($"Filling at {row}, {col} ");
 
             //Step 1: Check if the cell is on the board
             if (row < 0 || row >= board.Size || col < 0 || col >= board.Size)
             {
-                //print a message indicating the cell is out of bounds
-                //Console.WriteLine("Out of bounds. Stop");
-                //Pause the program for sleepcount number of milliseconds
-                //Thread.Sleep(sleepCount);
-
                 // If the cell is not on the board, end of method
                 return board;
             }
 
-            //Step 2: If the cell is a wall, end the method
+            //Step 2: If the cell is a bomb, end the method
             if (board.Cells[row, col].IsBomb)
             {
-                //Print a message indicating the cell is a wall
-                //Console.WriteLine("Hit a bomb. Stop");
-                //Pause the program for sleepcount number of milliseconds
-                //Thread.Sleep(sleepCount);
-
                 return board;
             }
-            //step 4: if the cell has bomb neighbors
+
+            //Step 3: If the cell has already been filled
+            else if (board.Cells[row, col].IsVisited)
+            {
+                return board;
+            }
+            //Step 4: If the cell neighbors a bomb
             else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
             {
+                //visit that cell first
                 board.Cells[row, col].IsVisited = true;
+                //then end the method
                 return board;
             }
-            //Step 5: "visit" the cell
+            //Step 5: Fill the cell
             else
             {
                 board.Cells[row, col].IsVisited = true;
-                //Pause the program for sleepcount number of milliseconds
-                //Thread.Sleep(sleepCount);
             }
-
-            //Improve the visual effect of the floodfill
-            //Comment out to have program history
-            //Console.Clear();
-            //Print the current board
-            //Console.WriteLine();
-            //PrintBoard(board);
 
             // Call the floodfill method to the west
             board = FloodFill(board, row, col - 1);
@@ -301,6 +284,8 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
 
             // Call the floodfill method to the southeast
             board = FloodFill(board, row + 1, col + 1);
+
+
             //return the board
             return board;
         }
