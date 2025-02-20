@@ -16,7 +16,9 @@ using System;
 Console.WriteLine("Hello, welcome to Minesweeper!");
 
 // Create a new board for gameplay (Sized 4, difficulty 1)
-Board gameBoard = new Board(4, 1);
+Board gameBoard = new Board(5, 1);
+
+PrintAnswerKey(gameBoard);
 
 // Instantiate gameLogic
 BoardLogic gameLogic = new BoardLogic(gameBoard);

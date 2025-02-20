@@ -215,5 +215,94 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 return GameStatus.InProgress;
             }
         }
+
+        /// <summary>
+        /// This method marks all neighboring cells that are empty as visited
+        /// </summary>
+        /// <param name="board"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        public Board FloodFill(Board board, int row, int col)
+        {
+            //Declare and initialize
+            //int sleepCount = 25; // milliseconds
+
+            //Change the text color to white
+            Console.ForegroundColor = ConsoleColor.White;
+            //Print the current cell to console
+            Console.Write($"Filling at {row}, {col} ");
+            //Pause the program for sleepcount number of milliseconds
+            //Thread.Sleep(sleepCount);
+
+            //Step 1: Check if the cell is on the board
+            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size)
+            {
+                //print a message indicating the cell is out of bounds
+                //Console.WriteLine("Out of bounds. Stop");
+                //Pause the program for sleepcount number of milliseconds
+                //Thread.Sleep(sleepCount);
+
+                // If the cell is not on the board, end of method
+                return board;
+            }
+
+            //Step 2: If the cell is a wall, end the method
+            if (board.Cells[row, col].IsBomb)
+            {
+                //Print a message indicating the cell is a wall
+                //Console.WriteLine("Hit a bomb. Stop");
+                //Pause the program for sleepcount number of milliseconds
+                //Thread.Sleep(sleepCount);
+
+                return board;
+            }
+            //step 4: if the cell has bomb neighbors
+            else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
+            {
+                board.Cells[row, col].IsVisited = true;
+                return board;
+            }
+            //Step 5: "visit" the cell
+            else
+            {
+                board.Cells[row, col].IsVisited = true;
+                //Pause the program for sleepcount number of milliseconds
+                //Thread.Sleep(sleepCount);
+            }
+
+            //Improve the visual effect of the floodfill
+            //Comment out to have program history
+            //Console.Clear();
+            //Print the current board
+            //Console.WriteLine();
+            //PrintBoard(board);
+
+            // Call the floodfill method to the west
+            board = FloodFill(board, row, col - 1);
+
+            // Call the floodfill method to the north
+            board = FloodFill(board, row - 1, col);
+
+            // Call the floodfill method to the south
+            board = FloodFill(board, row + 1, col);
+
+            // Call the floodfill method to the east
+            board = FloodFill(board, row, col + 1);
+
+            // Call the floodfill method to the northwest
+            board = FloodFill(board, row - 1, col - 1);
+
+            // Call the floodfill method to the southwest
+            board = FloodFill(board, row + 1, col - 1);
+
+            // Call the floodfill method to the northeast
+            board = FloodFill(board, row - 1, col + 1);
+
+            // Call the floodfill method to the southeast
+            board = FloodFill(board, row + 1, col + 1);
+            //return the board
+            return board;
+        }
     }
 }
