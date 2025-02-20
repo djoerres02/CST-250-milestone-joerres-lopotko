@@ -176,7 +176,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         private void SetupRewards()
         {
             // User has 1 use of the hint reward after finding it.
-            board.RewardsRemaining = 0;
+            //board.RewardsRemaining = 0;
             int row = random.Next(board.Size);
             int col = random.Next(board.Size);
 
@@ -235,13 +235,11 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 // If the cell is not on the board, end of method
                 return board;
             }
-
             //Step 2: If the cell is a bomb, end the method
             if (board.Cells[row, col].IsBomb)
             {
                 return board;
             }
-
             //Step 3: If the cell has already been filled
             else if (board.Cells[row, col].IsVisited)
             {
@@ -255,10 +253,14 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 //then end the method
                 return board;
             }
-            //Step 5: Fill the cell
+            //Step 5: Fill the cell and check for reward
             else
             {
                 board.Cells[row, col].IsVisited = true;
+                if (board.Cells[row, col].HasSpecialReward)
+                {
+                    board.RewardsRemaining++;
+                }
             }
 
             // Call the floodfill method to the west

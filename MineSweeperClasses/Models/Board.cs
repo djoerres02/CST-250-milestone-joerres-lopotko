@@ -35,7 +35,7 @@ namespace MineSweeperClasses.Models
             Size = size;
             Difficulty = difficulty;
             Cells = new Cell[size, size];
-            RewardsRemaining = 1;
+            RewardsRemaining = 0;
         }
     }
 }
