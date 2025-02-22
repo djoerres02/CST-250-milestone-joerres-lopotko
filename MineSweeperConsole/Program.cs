@@ -21,8 +21,6 @@ Board gameBoard = new Board(5, 1);
 // Instantiate gameLogic
 BoardLogic gameLogic = new BoardLogic(gameBoard);
 
-PrintAnswerKey(gameBoard);
-
 // Bool variable for game over, allow for looping of game
 // When gameOver is true, the game ends.
 bool gameOver = false;
