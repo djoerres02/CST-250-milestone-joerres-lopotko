@@ -24,8 +24,8 @@ PrintAnswerKey(gameBoard);
 BoardLogic gameLogic = new BoardLogic(gameBoard);
 
 // Bool variable for game over, allow for looping of game
-// When GameOver is true, the game ends.
-bool GameOver = false;
+// When gameOver is true, the game ends.
+bool gameOver = false;
 
 PrintBoard(gameBoard);
 
@@ -33,9 +33,9 @@ PrintBoard(gameBoard);
 // End of Main Method
 // ----------------------------------------------------------------------------------------
 
-// Loop for running game, breaks when GameOver is set to true
+// Loop for running game, breaks when gameOver is set to true
 // (Set True by game over, or win)
-while (!GameOver)
+while (!gameOver)
 {
     // Declare row and col
     int row;
@@ -174,8 +174,8 @@ while (!GameOver)
         // Give celebratory message
         Console.WriteLine("Congratulations! You've won the game!");
 
-        // Set GameOver to true, breaking gameplay loop
-        GameOver = true;
+        // Set gameOver to true, breaking gameplay loop
+        gameOver = true;
     }
     // If user lost the game
     else if (state == Board.GameStatus.Lost)
@@ -183,8 +183,8 @@ while (!GameOver)
         // Give game over message
         Console.WriteLine("Sorry, you hit a bomb. Game over!");
 
-        // Set GameOver to true, breaking gameplay loop
-        GameOver = true;
+        // Set gameOver to true, breaking gameplay loop
+        gameOver = true;
     }
     else
     {
@@ -324,7 +324,7 @@ static void PrintBoard(Board board)
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Below is code for printing the answer key , not used in Milestone 2
+// Below is code for printing the answer key , used for testing
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /// <summary>
