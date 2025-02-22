@@ -18,10 +18,10 @@ Console.WriteLine("Hello, welcome to Minesweeper!");
 // Create a new board for gameplay (Sized 4, difficulty 1)
 Board gameBoard = new Board(5, 1);
 
-PrintAnswerKey(gameBoard);
-
 // Instantiate gameLogic
 BoardLogic gameLogic = new BoardLogic(gameBoard);
+
+PrintAnswerKey(gameBoard);
 
 // Bool variable for game over, allow for looping of game
 // When GameOver is true, the game ends.
@@ -324,7 +324,7 @@ static void PrintBoard(Board board)
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Below is code for printing the answer key , not used in Milestone 2
+// Below is code for printing the answer key , not used in Milestone 2 (Board must be setup in boardLogic class)
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /// <summary>
@@ -333,9 +333,7 @@ static void PrintBoard(Board board)
 /// <param name="board"></param>
 static void PrintAnswerKey(Board board)
 {
-
-    BoardLogic boardLogic = new BoardLogic(board);
-    Cell[,] boardCells = boardLogic.board.Cells;
+    Cell[,] boardCells = board.Cells;
     int size = board.Size;
 
     // Print column numbers

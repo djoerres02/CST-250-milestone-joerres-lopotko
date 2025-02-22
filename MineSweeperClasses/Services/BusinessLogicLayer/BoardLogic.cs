@@ -250,6 +250,11 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             {
                 //visit that cell first
                 board.Cells[row, col].IsVisited = true;
+                //if reward is made visible, user now obtains it
+                if (board.Cells[row, col].HasSpecialReward)
+                {
+                    board.RewardsRemaining++;
+                }
                 //then end the method
                 return board;
             }
@@ -257,6 +262,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             else
             {
                 board.Cells[row, col].IsVisited = true;
+                //if reward is made visible, user now obtains it
                 if (board.Cells[row, col].HasSpecialReward)
                 {
                     board.RewardsRemaining++;
