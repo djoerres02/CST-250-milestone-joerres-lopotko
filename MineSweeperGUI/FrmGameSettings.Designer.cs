@@ -37,6 +37,8 @@
             radEasy = new RadioButton();
             radMedium = new RadioButton();
             radDifficult = new RadioButton();
+            lblSize = new Label();
+            lblPercentBombs = new Label();
             ((System.ComponentModel.ISupportInitialize)trkSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trkPercentBombs).BeginInit();
             grpLevel.SuspendLayout();
@@ -61,18 +63,18 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 39);
             label1.Name = "label1";
-            label1.Size = new Size(27, 15);
+            label1.Size = new Size(30, 15);
             label1.TabIndex = 1;
-            label1.Text = "Size";
+            label1.Text = "Size:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(12, 149);
             label2.Name = "label2";
-            label2.Size = new Size(87, 15);
+            label2.Size = new Size(90, 15);
             label2.TabIndex = 1;
-            label2.Text = "Percent Bombs";
+            label2.Text = "Percent Bombs:";
             // 
             // label3
             // 
@@ -128,6 +130,24 @@
             radDifficult.Text = "Difficult";
             radDifficult.UseVisualStyleBackColor = true;
             // 
+            // lblSize
+            // 
+            lblSize.AutoSize = true;
+            lblSize.Location = new Point(48, 39);
+            lblSize.Name = "lblSize";
+            lblSize.Size = new Size(13, 15);
+            lblSize.TabIndex = 1;
+            lblSize.Text = "0";
+            // 
+            // lblPercentBombs
+            // 
+            lblPercentBombs.AutoSize = true;
+            lblPercentBombs.Location = new Point(101, 149);
+            lblPercentBombs.Name = "lblPercentBombs";
+            lblPercentBombs.Size = new Size(17, 15);
+            lblPercentBombs.TabIndex = 1;
+            lblPercentBombs.Text = "%";
+            // 
             // FrmGameSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -136,6 +156,8 @@
             Controls.Add(grpLevel);
             Controls.Add(label3);
             Controls.Add(label2);
+            Controls.Add(lblPercentBombs);
+            Controls.Add(lblSize);
             Controls.Add(label1);
             Controls.Add(trkPercentBombs);
             Controls.Add(trkSize);
@@ -160,5 +182,7 @@
         private RadioButton radDifficult;
         private RadioButton radMedium;
         private RadioButton radEasy;
+        private Label lblSize;
+        private Label lblPercentBombs;
     }
 }
