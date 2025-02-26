@@ -28,12 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            pnlGame = new Panel();
+            label1 = new Label();
+            lblTime = new Label();
+            label2 = new Label();
+            lblScore = new Label();
+            btnRestart = new Button();
+            SuspendLayout();
+            // 
+            // pnlGame
+            // 
+            pnlGame.Location = new Point(1, 12);
+            pnlGame.Name = "pnlGame";
+            pnlGame.Size = new Size(549, 426);
+            pnlGame.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(570, 64);
+            label1.Name = "label1";
+            label1.Size = new Size(64, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Start Time:";
+            // 
+            // lblTime
+            // 
+            lblTime.AutoSize = true;
+            lblTime.Location = new Point(570, 90);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(34, 15);
+            lblTime.TabIndex = 1;
+            lblTime.Text = "Time";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(570, 134);
+            label2.Name = "label2";
+            label2.Size = new Size(39, 15);
+            label2.TabIndex = 0;
+            label2.Text = "Score:";
+            // 
+            // lblScore
+            // 
+            lblScore.AutoSize = true;
+            lblScore.Location = new Point(570, 160);
+            lblScore.Name = "lblScore";
+            lblScore.Size = new Size(13, 15);
+            lblScore.TabIndex = 1;
+            lblScore.Text = "0";
+            // 
+            // btnRestart
+            // 
+            btnRestart.Location = new Point(591, 206);
+            btnRestart.Name = "btnRestart";
+            btnRestart.Size = new Size(75, 23);
+            btnRestart.TabIndex = 2;
+            btnRestart.Text = "Restart";
+            btnRestart.UseVisualStyleBackColor = true;
+            // 
+            // FrmMineSweeper
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(707, 450);
+            Controls.Add(btnRestart);
+            Controls.Add(lblScore);
+            Controls.Add(label2);
+            Controls.Add(lblTime);
+            Controls.Add(label1);
+            Controls.Add(pnlGame);
+            Name = "FrmMineSweeper";
+            Text = "Minesweeper";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Panel pnlGame;
+        private Label label1;
+        private Label lblTime;
+        private Label label2;
+        private Label lblScore;
+        private Button btnRestart;
     }
 }

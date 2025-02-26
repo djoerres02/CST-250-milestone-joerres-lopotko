@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             trkSize = new TrackBar();
-            trkBombs = new TrackBar();
+            trkPercentBombs = new TrackBar();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -38,7 +38,7 @@
             radMedium = new RadioButton();
             radDifficult = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)trkSize).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trkBombs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trkPercentBombs).BeginInit();
             grpLevel.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,12 +49,12 @@
             trkSize.Size = new Size(295, 45);
             trkSize.TabIndex = 0;
             // 
-            // trkBombs
+            // trkPercentBombs
             // 
-            trkBombs.Location = new Point(12, 167);
-            trkBombs.Name = "trkBombs";
-            trkBombs.Size = new Size(295, 45);
-            trkBombs.TabIndex = 0;
+            trkPercentBombs.Location = new Point(12, 167);
+            trkPercentBombs.Name = "trkPercentBombs";
+            trkPercentBombs.Size = new Size(295, 45);
+            trkPercentBombs.TabIndex = 0;
             // 
             // label1
             // 
@@ -137,12 +137,12 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(trkBombs);
+            Controls.Add(trkPercentBombs);
             Controls.Add(trkSize);
             Name = "FrmGameSettings";
             Text = "Start a New Game";
             ((System.ComponentModel.ISupportInitialize)trkSize).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trkBombs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trkPercentBombs).EndInit();
             grpLevel.ResumeLayout(false);
             grpLevel.PerformLayout();
             ResumeLayout(false);
@@ -152,7 +152,7 @@
         #endregion
 
         private TrackBar trkSize;
-        private TrackBar trkBombs;
+        private TrackBar trkPercentBombs;
         private Label label1;
         private Label label2;
         private Label label3;
