@@ -36,6 +36,7 @@
             radMedium = new RadioButton();
             radEasy = new RadioButton();
             lblSize = new Label();
+            btnStartGame = new Button();
             ((System.ComponentModel.ISupportInitialize)trkSizeBoard).BeginInit();
             grpLevel.SuspendLayout();
             SuspendLayout();
@@ -124,11 +125,22 @@
             lblSize.TabIndex = 1;
             lblSize.Text = "4";
             // 
+            // btnStartGame
+            // 
+            btnStartGame.Location = new Point(105, 234);
+            btnStartGame.Name = "btnStartGame";
+            btnStartGame.Size = new Size(75, 23);
+            btnStartGame.TabIndex = 4;
+            btnStartGame.Text = "Start Game";
+            btnStartGame.UseVisualStyleBackColor = true;
+            btnStartGame.Click += BtnStartGameClickEH;
+            // 
             // FrmGameSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(323, 252);
+            ClientSize = new Size(323, 285);
+            Controls.Add(btnStartGame);
             Controls.Add(grpLevel);
             Controls.Add(label3);
             Controls.Add(lblSize);
@@ -153,5 +165,6 @@
         private RadioButton radMedium;
         private RadioButton radEasy;
         private Label lblSize;
+        private Button btnStartGame;
     }
 }
