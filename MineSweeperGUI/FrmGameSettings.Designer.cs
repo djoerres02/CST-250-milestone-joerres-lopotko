@@ -28,35 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            trkSize = new TrackBar();
-            trkPercentBombs = new TrackBar();
+            trkSizeBoard = new TrackBar();
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             grpLevel = new GroupBox();
-            radEasy = new RadioButton();
-            radMedium = new RadioButton();
             radDifficult = new RadioButton();
+            radMedium = new RadioButton();
+            radEasy = new RadioButton();
             lblSize = new Label();
-            lblPercentBombs = new Label();
-            ((System.ComponentModel.ISupportInitialize)trkSize).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trkPercentBombs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trkSizeBoard).BeginInit();
             grpLevel.SuspendLayout();
             SuspendLayout();
             // 
-            // trkSize
+            // trkSizeBoard
             // 
-            trkSize.Location = new Point(12, 57);
-            trkSize.Name = "trkSize";
-            trkSize.Size = new Size(295, 45);
-            trkSize.TabIndex = 0;
-            // 
-            // trkPercentBombs
-            // 
-            trkPercentBombs.Location = new Point(12, 167);
-            trkPercentBombs.Name = "trkPercentBombs";
-            trkPercentBombs.Size = new Size(295, 45);
-            trkPercentBombs.TabIndex = 0;
+            trkSizeBoard.Location = new Point(12, 57);
+            trkSizeBoard.Maximum = 12;
+            trkSizeBoard.Minimum = 4;
+            trkSizeBoard.Name = "trkSizeBoard";
+            trkSizeBoard.Size = new Size(295, 45);
+            trkSizeBoard.TabIndex = 0;
+            trkSizeBoard.Value = 4;
+            trkSizeBoard.ValueChanged += TrkSizeBoardValueChangedEH;
             // 
             // label1
             // 
@@ -66,15 +59,6 @@
             label1.Size = new Size(30, 15);
             label1.TabIndex = 1;
             label1.Text = "Size:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 149);
-            label2.Name = "label2";
-            label2.Size = new Size(90, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Percent Bombs:";
             // 
             // label3
             // 
@@ -90,34 +74,12 @@
             grpLevel.Controls.Add(radDifficult);
             grpLevel.Controls.Add(radMedium);
             grpLevel.Controls.Add(radEasy);
-            grpLevel.Location = new Point(53, 233);
+            grpLevel.Location = new Point(36, 108);
             grpLevel.Name = "grpLevel";
             grpLevel.Size = new Size(200, 100);
             grpLevel.TabIndex = 3;
             grpLevel.TabStop = false;
-            grpLevel.Text = "Choose a level";
-            // 
-            // radEasy
-            // 
-            radEasy.AutoSize = true;
-            radEasy.Location = new Point(6, 22);
-            radEasy.Name = "radEasy";
-            radEasy.Size = new Size(48, 19);
-            radEasy.TabIndex = 0;
-            radEasy.TabStop = true;
-            radEasy.Text = "Easy";
-            radEasy.UseVisualStyleBackColor = true;
-            // 
-            // radMedium
-            // 
-            radMedium.AutoSize = true;
-            radMedium.Location = new Point(6, 47);
-            radMedium.Name = "radMedium";
-            radMedium.Size = new Size(70, 19);
-            radMedium.TabIndex = 0;
-            radMedium.TabStop = true;
-            radMedium.Text = "Medium";
-            radMedium.UseVisualStyleBackColor = true;
+            grpLevel.Text = "Choose A Difficulty";
             // 
             // radDifficult
             // 
@@ -130,6 +92,29 @@
             radDifficult.Text = "Difficult";
             radDifficult.UseVisualStyleBackColor = true;
             // 
+            // radMedium
+            // 
+            radMedium.AutoSize = true;
+            radMedium.Location = new Point(6, 47);
+            radMedium.Name = "radMedium";
+            radMedium.Size = new Size(70, 19);
+            radMedium.TabIndex = 0;
+            radMedium.TabStop = true;
+            radMedium.Text = "Medium";
+            radMedium.UseVisualStyleBackColor = true;
+            // 
+            // radEasy
+            // 
+            radEasy.AutoSize = true;
+            radEasy.Location = new Point(6, 22);
+            radEasy.Name = "radEasy";
+            radEasy.Size = new Size(48, 19);
+            radEasy.TabIndex = 0;
+            radEasy.TabStop = true;
+            radEasy.Text = "Easy";
+            radEasy.UseVisualStyleBackColor = true;
+            radEasy.CheckedChanged += DifficultyCheckedChangedEH;
+            // 
             // lblSize
             // 
             lblSize.AutoSize = true;
@@ -137,34 +122,21 @@
             lblSize.Name = "lblSize";
             lblSize.Size = new Size(13, 15);
             lblSize.TabIndex = 1;
-            lblSize.Text = "0";
-            // 
-            // lblPercentBombs
-            // 
-            lblPercentBombs.AutoSize = true;
-            lblPercentBombs.Location = new Point(101, 149);
-            lblPercentBombs.Name = "lblPercentBombs";
-            lblPercentBombs.Size = new Size(17, 15);
-            lblPercentBombs.TabIndex = 1;
-            lblPercentBombs.Text = "%";
+            lblSize.Text = "4";
             // 
             // FrmGameSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(323, 345);
+            ClientSize = new Size(323, 252);
             Controls.Add(grpLevel);
             Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(lblPercentBombs);
             Controls.Add(lblSize);
             Controls.Add(label1);
-            Controls.Add(trkPercentBombs);
-            Controls.Add(trkSize);
+            Controls.Add(trkSizeBoard);
             Name = "FrmGameSettings";
             Text = "Start a New Game";
-            ((System.ComponentModel.ISupportInitialize)trkSize).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trkPercentBombs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trkSizeBoard).EndInit();
             grpLevel.ResumeLayout(false);
             grpLevel.PerformLayout();
             ResumeLayout(false);
@@ -173,16 +145,13 @@
 
         #endregion
 
-        private TrackBar trkSize;
-        private TrackBar trkPercentBombs;
+        private TrackBar trkSizeBoard;
         private Label label1;
-        private Label label2;
         private Label label3;
         private GroupBox grpLevel;
         private RadioButton radDifficult;
         private RadioButton radMedium;
         private RadioButton radEasy;
         private Label lblSize;
-        private Label lblPercentBombs;
     }
 }
