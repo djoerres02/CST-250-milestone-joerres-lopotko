@@ -92,6 +92,7 @@
             radDifficult.TabStop = true;
             radDifficult.Text = "Difficult";
             radDifficult.UseVisualStyleBackColor = true;
+            radDifficult.CheckedChanged += DifficultyCheckedChangedEH;
             // 
             // radMedium
             // 
@@ -103,6 +104,7 @@
             radMedium.TabStop = true;
             radMedium.Text = "Medium";
             radMedium.UseVisualStyleBackColor = true;
+            radMedium.CheckedChanged += DifficultyCheckedChangedEH;
             // 
             // radEasy
             // 

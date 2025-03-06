@@ -5,13 +5,17 @@
  * 2/26/2025
  * Completed Together
  */
+using MineSweeperClasses.Models;
+
 namespace MineSweeperGUI
 {
     public partial class FrmMineSweeper : Form
     {
-        public FrmMineSweeper()
+        private Board board;
+        public FrmMineSweeper(Board gameBoard)
         {
             InitializeComponent();
+            board = gameBoard;
         }
     }
 }

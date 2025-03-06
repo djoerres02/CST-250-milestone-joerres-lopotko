@@ -23,7 +23,7 @@ namespace MineSweeperGUI
     public partial class FrmGameSettings : Form
     {
         // Initialize bool determining whether to start game
-        bool startGame;
+        bool startGame = false;
         // Setup board
         public Board board { get; set; }
 
@@ -31,7 +31,7 @@ namespace MineSweeperGUI
         {
             InitializeComponent();
             // Initialize and declare board size & difficulty
-            int boardSize = 0;
+            int boardSize = 4;
             int boardDifficulty = 0;
             
             // Instantiate board
@@ -80,7 +80,6 @@ namespace MineSweeperGUI
                         MessageBox.Show("Error, invalid difficulty");
                         break;
                 }
-                
             }
         }
 
@@ -91,12 +90,19 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
-            if (startGame)
+            if (board.Difficulty > 0)
             {
+                // Disable the form
+                this.Enabled = false;
+                // Create an instance of frmMineSweeper with board passed in
+                FrmMineSweeper frmMineSweeper = new FrmMineSweeper(board);
+                // Show the minesweeper game
+                frmMineSweeper.Show();
                 
             }
             else
             {
+                // Inform the user to select a difficulty
                 MessageBox.Show("Please ensure a difficulty is selected.");
             }
         }
