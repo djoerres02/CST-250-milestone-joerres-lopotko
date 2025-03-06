@@ -38,9 +38,9 @@
             // 
             // pnlGame
             // 
-            pnlGame.Location = new Point(1, 12);
+            pnlGame.Location = new Point(82, 12);
             pnlGame.Name = "pnlGame";
-            pnlGame.Size = new Size(549, 426);
+            pnlGame.Size = new Size(400, 400);
             pnlGame.TabIndex = 0;
             // 
             // label1

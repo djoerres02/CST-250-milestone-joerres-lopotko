@@ -90,9 +90,11 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
+            // Ensure the user has a board difficulty selected
+            // Initial board difficulty is set to 0
             if (board.Difficulty > 0)
             {
-                // Disable the form
+                // Disable the game settings form
                 this.Enabled = false;
                 // Create an instance of frmMineSweeper with board passed in
                 FrmMineSweeper frmMineSweeper = new FrmMineSweeper(board);
