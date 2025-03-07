@@ -92,9 +92,8 @@ namespace MineSweeperGUI
             int row = point.X;
             int col = point.Y;
 
-            // Display choice to user
+            // Display choice to user (Testing purposes)
             MessageBox.Show($"Cell {row},{col} has been selected");
-
 
         }
 
