@@ -53,11 +53,28 @@ namespace MineSweeperGUI
                     buttons[row, col].Left = row * buttonSize;
                     buttons[row, col].Top = col * buttonSize;
                     buttons[row, col].BackColor = SystemColors.Control;
+                    buttons[row, col].Click += BtnCellClickEH;
                     
                     buttons[row, col].Tag = new Point(row, col);
                     pnlGame.Controls.Add(buttons[row, col]);
                 }
             }
+        }
+
+        private void BtnCellClickEH(object sender, EventArgs e)
+        {
+            // Declare and initialize
+            // Cast the sender object to a Button
+            Button button = (Button)sender;
+            // Retreive Tag property of button
+            Point point = (Point)button.Tag;
+            // Extract the row and col values from the Point object
+            int row = point.X;
+            int col = point.Y;
+
+            // Display choice to user
+            MessageBox.Show($"Cell {row},{col} has been selected");
+
         }
     }
 }
