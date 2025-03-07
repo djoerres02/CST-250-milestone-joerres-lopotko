@@ -14,17 +14,21 @@ namespace MineSweeperGUI
     {
         // Class level variables
         private Board board;
+        TimeSpan timeSpan = new TimeSpan();
+        bool gameOn = false;
 
-        
         public FrmMineSweeper(Board gameBoard)
         {
             InitializeComponent();
             board = gameBoard;
+            // Call method to set up buttons
             SetUpButtons();
+            // Setup the game's time label
+            lblTime.Text = timeSpan.ToString();
         }
-        
+
         /// <summary>
-        /// Set up the buttons
+        /// Set up the game buttons
         /// </summary>
         private void SetUpButtons()
         {
@@ -52,17 +56,33 @@ namespace MineSweeperGUI
                     // use the left and top sides
                     buttons[row, col].Left = row * buttonSize;
                     buttons[row, col].Top = col * buttonSize;
+                    // Set button color
                     buttons[row, col].BackColor = SystemColors.Control;
+                    // Assign cell click event handler to each button
                     buttons[row, col].Click += BtnCellClickEH;
-                    
+                    // Tag a point to each button
                     buttons[row, col].Tag = new Point(row, col);
+                    // Add the buttons to the game panel
                     pnlGame.Controls.Add(buttons[row, col]);
                 }
             }
         }
 
+        /// <summary>
+        /// Click event handler for buttons
+        /// Soon as the first button is clicked, the game timer will start.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCellClickEH(object sender, EventArgs e)
         {
+            // If the game hasn't been started yet
+            if (!gameOn)
+            {
+                // Mark game as started, then start the game timer.
+                gameOn = true;
+
+            }
             // Declare and initialize
             // Cast the sender object to a Button
             Button button = (Button)sender;
@@ -74,6 +94,17 @@ namespace MineSweeperGUI
 
             // Display choice to user
             MessageBox.Show($"Cell {row},{col} has been selected");
+
+
+        }
+
+        /// <summary>
+        /// Counts the time
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TmrStopwatchTickEH(object sender, EventArgs e)
+        {
 
         }
     }

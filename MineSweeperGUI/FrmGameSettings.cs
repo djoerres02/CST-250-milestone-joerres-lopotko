@@ -91,7 +91,7 @@ namespace MineSweeperGUI
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
             // Ensure the user has a board difficulty selected
-            // Initial board difficulty is set to 0
+            // Initial board difficulty is set to 0, a placeholder
             if (board.Difficulty > 0)
             {
                 // Disable the game settings form

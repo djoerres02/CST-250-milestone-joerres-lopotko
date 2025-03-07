@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pnlGame = new Panel();
             label1 = new Label();
             lblTime = new Label();
             label2 = new Label();
             lblScore = new Label();
             btnRestart = new Button();
+            tmrStopWatch = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // pnlGame
@@ -88,6 +90,10 @@
             btnRestart.Text = "Restart";
             btnRestart.UseVisualStyleBackColor = true;
             // 
+            // tmrStopWatch
+            // 
+            tmrStopWatch.Tick += TmrStopwatchTickEH;
+            // 
             // FrmMineSweeper
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -113,5 +119,6 @@
         private Label label2;
         private Label lblScore;
         private Button btnRestart;
+        private System.Windows.Forms.Timer tmrStopWatch;
     }
 }
