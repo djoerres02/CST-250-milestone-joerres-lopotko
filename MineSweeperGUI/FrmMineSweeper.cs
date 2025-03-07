@@ -53,7 +53,8 @@ namespace MineSweeperGUI
                     buttons[row, col].Left = row * buttonSize;
                     buttons[row, col].Top = col * buttonSize;
                     buttons[row, col].BackColor = SystemColors.Control;
-
+                    
+                    buttons[row, col].Tag = new Point(row, col);
                     pnlGame.Controls.Add(buttons[row, col]);
                 }
             }
