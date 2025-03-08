@@ -109,6 +109,7 @@
             btnUseReward.Text = "Use Reward";
             btnUseReward.UseVisualStyleBackColor = true;
             btnUseReward.Visible = false;
+            btnUseReward.Click += BtnUseRewardClickEH;
             // 
             // FrmMineSweeper
             // 

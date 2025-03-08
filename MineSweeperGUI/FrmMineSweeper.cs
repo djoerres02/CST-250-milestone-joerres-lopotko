@@ -100,7 +100,7 @@ namespace MineSweeperGUI
             //MessageBox.Show($"Cell {row},{col} has been selected");
 
             //if the click is a right mouseclick, flag or unflag the clicked cell
-            if(e.Button  == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 if (board.Cells[row, col].IsFlagged)
                 {
@@ -186,7 +186,7 @@ namespace MineSweeperGUI
                 {
                     //set the contents of the button depending on what the corresponding cell if visited or flagged
                     if (board.Cells[row, col].IsVisited)
-                    { 
+                    {
                         if (board.Cells[row, col].IsBomb)
                         {
                             buttons[row, col].Text = "B";
@@ -218,7 +218,7 @@ namespace MineSweeperGUI
                 }
             }
             //update visibility of reward button if user has a reward to use.
-            if(board.RewardsRemaining > 0)
+            if (board.RewardsRemaining > 0)
             {
                 btnUseReward.Visible = true;
             }
@@ -241,7 +241,7 @@ namespace MineSweeperGUI
             //This will call the board setup methods again, "reseting" the board
             boardLogic = new BoardLogic(board);
             //re-enable all the buttons
-            foreach(Button btn in pnlGame.Controls)
+            foreach (Button btn in pnlGame.Controls)
             {
                 btn.Enabled = true;
                 btn.Text = "";
@@ -258,6 +258,19 @@ namespace MineSweeperGUI
         private void BtnRestartClickEH(object sender, EventArgs e)
         {
             ResetBoard();
+        }
+
+        /// <summary>
+        /// event fires when the use reward button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnUseRewardClickEH(object sender, EventArgs e)
+        {
+            //call the boardLogic's reward method
+            boardLogic.UseSpecialBonus();
+            //update the board once again
+            UpdateButtons();
         }
     }
 }
