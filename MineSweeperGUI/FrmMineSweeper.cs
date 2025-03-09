@@ -204,6 +204,7 @@ namespace MineSweeperGUI
                         {
                             buttons[row, col].Enabled = false;
                         }
+                        buttons[row, col].BackColor = Color.Gray;
                     }
                     else if (board.Cells[row, col].IsFlagged)
                     {

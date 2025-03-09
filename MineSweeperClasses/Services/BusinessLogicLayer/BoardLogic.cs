@@ -134,10 +134,13 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                             // Now offset the current index and check if it's a bomb
                             int iCheck = i + iOffset;
                             int jCheck = j + jOffset;
-                            if (IsCellOnBoard(iCheck, jCheck) && board.Cells[iCheck, jCheck].IsBomb)
+                            if(IsCellOnBoard(iCheck, jCheck))
                             {
-                                bombCount++;
-                            }
+                                if (board.Cells[iCheck, jCheck].IsBomb)
+                                {
+                                    bombCount++;
+                                }
+                            } 
                         }
                     }
                     // Set the bomb neighbors
