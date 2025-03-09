@@ -63,8 +63,8 @@ namespace MineSweeperGUI
                     buttons[row, col].BackColor = SystemColors.Control;
                     // Set button background properties
                     buttons[row, col].BackgroundImageLayout = ImageLayout.Stretch;
-                    // Set button background
-                    buttons[row, col].BackgroundImage = ResourceImages.Tile1;
+                    // Set default button background
+                    buttons[row, col].BackgroundImage = ResourceImages.Tile2;
                     // Assign cell click event handler to each button
                     buttons[row, col].MouseDown += BtnCellMouseDownEH;
                     // Tag a point to each button
@@ -202,9 +202,37 @@ namespace MineSweeperGUI
                         }
                         else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
                         {
-                            buttons[row, col].Text = "" + board.Cells[row, col].NumberOfBombNeighbors;
-                            buttons[row, col].Enabled = false;
+                            // Switch statement
+                            // Based on # of bomb neighbors, set the background image according to the number
+                            switch (board.Cells[row, col].NumberOfBombNeighbors)
+                            {
+                                case 1:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number1;
+                                    break;
+                                case 2:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number2;
+                                    break;
+                                case 3:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number3;
+                                    break;
+                                case 4:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number4;
+                                    break;
+                                case 5:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number5;
+                                    break;
+                                case 6:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number6;
+                                    break;
+                                case 7:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number7;
+                                    break;
+                                default:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number8;
+                                    break;
+                            }
                         }
+
                         else
                         {
                             buttons[row, col].Enabled = false;
