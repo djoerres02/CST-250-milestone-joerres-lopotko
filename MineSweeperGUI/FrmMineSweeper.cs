@@ -18,6 +18,7 @@ namespace MineSweeperGUI
         TimeSpan timeSpan = new TimeSpan();
         bool gameOn = false;
         Button[,] buttons;
+        int gameScore = 0;
 
         public FrmMineSweeper(Board gameBoard)
         {
@@ -29,6 +30,7 @@ namespace MineSweeperGUI
             SetUpButtons();
             // Setup the game's time label
             lblTime.Text = timeSpan.ToString();
+            
         }
 
         /// <summary>
@@ -98,6 +100,7 @@ namespace MineSweeperGUI
             int row = point.Y;
             int col = point.X;
 
+
             // Display choice to user (Testing purposes)
             //MessageBox.Show($"Cell {row},{col} has been selected");
 
@@ -132,6 +135,8 @@ namespace MineSweeperGUI
                     board.RewardsRemaining++;
                 }
 
+                
+
                 //After move is made, update the board
                 UpdateButtons();
 
@@ -146,6 +151,8 @@ namespace MineSweeperGUI
 
                     // Set gameOver to true, breaking gameplay loop
                     gameOn = false;
+                    // Ensure user can no longer interact with the board
+                    pnlGame.Enabled = false;
                 }
                 // If user lost the game
                 else if (state == Board.GameStatus.Lost)
@@ -170,16 +177,23 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void TmrStopwatchTickEH(object sender, EventArgs e)
         {
-
+            if (gameOn)
+            {
+                tmrStopWatch.Start();
+                timeSpan = timeSpan.Add(TimeSpan.FromMilliseconds(tmrStopWatch.Interval));
+                lblTime.Text = timeSpan.ToString();
+            }
         }
 
         /// <summary>
-        /// updates grid of buttons to refllect the board
+        /// Updates grid of buttons to reflect the board
+        /// also update the game score
         /// </summary>
         /// <param name="row"></param>
         /// <param name="col"></param>
         private void UpdateButtons()
         {
+            
             //walkthrough the grid of buttons, updating each one with the corresponding cells contents
             for (int row = 0; row < board.Size; row++)
             {
@@ -204,8 +218,10 @@ namespace MineSweeperGUI
                         else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
                         {
                             buttons[row, col].Enabled = false;
+                            gameScore += board.Cells[row, col].NumberOfBombNeighbors;
                             // Switch statement
                             // Based on # of bomb neighbors, set the background image according to the number
+                            // Also add to the point counter
                             switch (board.Cells[row, col].NumberOfBombNeighbors)
                             {
                                 case 1:
@@ -233,6 +249,8 @@ namespace MineSweeperGUI
                                     buttons[row, col].BackgroundImage = ResourceImages.Number8;
                                     break;
                             }
+                            // Update the score label
+                            lblScore.Text = gameScore.ToString();
                         }
                         // If button has no neighbors, disable it
                         else
@@ -284,6 +302,10 @@ namespace MineSweeperGUI
             // Enable the panel the boards are on
             // allow for user input again
             pnlGame.Enabled = true;
+            // Reset the score
+            gameScore = 0;
+            // Update the score label
+            lblScore.Text = gameScore.ToString();
             //finally, update the board
             UpdateButtons();
         }
