@@ -4,6 +4,9 @@
  * Milestone 4
  * 2/26/2025
  * Completed Together
+ * Used TimeSpan code from Activity 5
+ * Used code to populate buttons from Activity 2
+ * Inserted minesweeper images to project via a resource file (https://youtu.be/rN807Rk8UoI)
  */
 using MineSweeperClasses.Models;
 using MineSweeperClasses.Services.BusinessLogicLayer;
