@@ -186,11 +186,13 @@ namespace MineSweeperGUI
                     {
                         if (board.Cells[row, col].IsBomb)
                         {
-                            buttons[row, col].Text = "B";
+                            //buttons[row, col].Text = "B";
+                            buttons[row,col].BackgroundImage = ResourceImages.Skull;
                         }
                         else if (board.Cells[row, col].HasSpecialReward)
                         {
-                            buttons[row, col].Text = "R";
+                            //buttons[row, col].Text = "R";
+                            buttons[row, col].BackgroundImage = ResourceImages.Gold;
                             buttons[row, col].Enabled = false;
                         }
                         else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
