@@ -59,8 +59,6 @@ namespace MineSweeperGUI
                     // use the left and top sides
                     buttons[row, col].Left = row * buttonSize;
                     buttons[row, col].Top = col * buttonSize;
-                    // Set button color
-                    buttons[row, col].BackColor = SystemColors.Control;
                     // Set button background properties
                     buttons[row, col].BackgroundImageLayout = ImageLayout.Stretch;
                     // Set default button background
@@ -109,10 +107,12 @@ namespace MineSweeperGUI
                 if (board.Cells[row, col].IsFlagged)
                 {
                     board.Cells[row, col].IsFlagged = false;
+                    buttons[row, col].BackgroundImage = ResourceImages.Tile2;
                 }
                 else
                 {
                     board.Cells[row, col].IsFlagged = true;
+                    buttons[row, col].BackgroundImage = ResourceImages.Flag;
                 }
                 UpdateButtons();
             }
@@ -188,20 +188,22 @@ namespace MineSweeperGUI
                     //set the contents of the button depending on what the corresponding cell if visited or flagged
                     if (board.Cells[row, col].IsVisited)
                     {
+                        // Set background to a flat tile indicating it's visited
                         buttons[row, col].BackgroundImage = ResourceImages.TileFlat;
                         if (board.Cells[row, col].IsBomb)
                         {
-                            //buttons[row, col].Text = "B";
+                            // Set background to a skull indicating it's a bomb
                             buttons[row,col].BackgroundImage = ResourceImages.Skull;
                         }
                         else if (board.Cells[row, col].HasSpecialReward)
                         {
-                            //buttons[row, col].Text = "R";
+                            // Set background to gold indicating it's a reward
                             buttons[row, col].BackgroundImage = ResourceImages.Gold;
                             buttons[row, col].Enabled = false;
                         }
                         else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
                         {
+                            buttons[row, col].Enabled = false;
                             // Switch statement
                             // Based on # of bomb neighbors, set the background image according to the number
                             switch (board.Cells[row, col].NumberOfBombNeighbors)
@@ -232,7 +234,7 @@ namespace MineSweeperGUI
                                     break;
                             }
                         }
-
+                        // If button has no neighbors, disable it
                         else
                         {
                             buttons[row, col].Enabled = false;
@@ -240,7 +242,7 @@ namespace MineSweeperGUI
                     }
                     else if (board.Cells[row, col].IsFlagged)
                     {
-                        buttons[row, col].Text = "F";
+                        buttons[row, col].BackgroundImage = ResourceImages.Flag;
                     }
                     //if cell isn't visited or flagged, leave it empty
                     else
@@ -276,7 +278,8 @@ namespace MineSweeperGUI
             foreach (Button btn in pnlGame.Controls)
             {
                 btn.Enabled = true;
-                btn.Text = "";
+                // Reset background image
+                btn.BackgroundImage = ResourceImages.Tile2;
             }
             // Enable the panel the boards are on
             // allow for user input again

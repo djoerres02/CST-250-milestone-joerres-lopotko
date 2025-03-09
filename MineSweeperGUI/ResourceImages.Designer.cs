@@ -63,6 +63,16 @@ namespace MineSweeperGUI {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Flag {
+            get {
+                object obj = ResourceManager.GetObject("Flag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gold {
             get {
                 object obj = ResourceManager.GetObject("Gold", resourceCulture);
