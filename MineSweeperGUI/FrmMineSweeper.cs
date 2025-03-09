@@ -190,7 +190,6 @@ namespace MineSweeperGUI
         {
             if (gameOn)
             {
-                
                 timeSpan = timeSpan.Add(TimeSpan.FromMilliseconds(tmrStopWatch.Interval));
                 lblTime.Text = timeSpan.ToString();
             }
@@ -299,6 +298,12 @@ namespace MineSweeperGUI
         /// </summary>
         private void ResetBoard()
         {
+            // Ensure time is stopped
+            tmrStopWatch.Stop();
+            // Ensure gameOn is set to false, so we can correctly start the timer
+            // when the user clicks a button
+            gameOn = false;
+
             //get the size and difficulty from the previous board to instantiate a new board
             int size = board.Size;
             int difficulty = board.Difficulty;
@@ -320,6 +325,10 @@ namespace MineSweeperGUI
             gameScore = 0;
             // Update the score label
             lblScore.Text = gameScore.ToString();
+            // Reset the timer
+            timeSpan = TimeSpan.Zero;
+            // Update the timer label
+            lblTime.Text = timeSpan.ToString();
             //finally, update the board
             UpdateButtons();
         }
