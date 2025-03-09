@@ -6,7 +6,7 @@
  * Completed Together
  * Used TimeSpan code from Activity 5
  * Used code to populate buttons from Activity 2
- * Inserted minesweeper images to project via a resource file (https://youtu.be/rN807Rk8UoI)
+ * Inserted minesweeper images to project via resource file ResourceImages.resx (https://youtu.be/rN807Rk8UoI)
  */
 using MineSweeperClasses.Models;
 using MineSweeperClasses.Services.BusinessLogicLayer;
@@ -20,9 +20,9 @@ namespace MineSweeperGUI
         private BoardLogic boardLogic;
         // TimeSpan object to track time
         TimeSpan timeSpan = new TimeSpan();
-        // Helper Boolean to count time when appropriate
+        // Boolean to indicate the game is running
         bool gameOn = false;
-        // Instantiate buttons
+        // 2D array to store btton references
         Button[,] buttons;
         // Initialize gameScore to keep track of user's score
         int gameScore = 0;
