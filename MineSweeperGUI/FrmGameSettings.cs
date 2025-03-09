@@ -22,10 +22,13 @@ namespace MineSweeperGUI
 
     public partial class FrmGameSettings : Form
     {
-        // Initialize bool determining whether to start game
-        bool startGame = false;
+        // Initialize bool determining whether to start game along with values to track the settings
+        bool StartGame = false;
+        int Size = 4;
+        int Difficulty = -1;
+
         // Setup board
-        public Board board { get; set; }
+        //public Board board { get; set; }
 
         public FrmGameSettings()
         {
@@ -35,7 +38,7 @@ namespace MineSweeperGUI
             int boardDifficulty = 0;
             
             // Instantiate board
-            board = new Board(boardSize, boardDifficulty);
+            //board = new Board(boardSize, boardDifficulty);
         }
 
         /// <summary>
@@ -47,7 +50,7 @@ namespace MineSweeperGUI
         private void TrkSizeBoardValueChangedEH(object sender, EventArgs e)
         {
             lblSize.Text = trkSizeBoard.Value.ToString();
-            board.Size = trkSizeBoard.Value;
+            Size = trkSizeBoard.Value;
         }
 
         /// <summary>
@@ -68,13 +71,13 @@ namespace MineSweeperGUI
                 switch (radioButton.Name)
                 {
                     case "radEasy":
-                        board.Difficulty = 1;
+                        Difficulty = 1;
                         break;
                     case "radMedium":
-                        board.Difficulty = 2;
+                        Difficulty = 2;
                         break;
                     case "radDifficult":
-                        board.Difficulty = 3;
+                        Difficulty = 3;
                         break;
                     default:
                         MessageBox.Show("Error, invalid difficulty");
@@ -92,10 +95,12 @@ namespace MineSweeperGUI
         {
             // Ensure the user has a board difficulty selected
             // Initial board difficulty is set to 0, a placeholder
-            if (board.Difficulty > 0)
+            if (Difficulty > 0)
             {
                 // Disable the game settings form
                 this.Enabled = false;
+                //instantiate a board with the chosen values
+                Board board = new Board(Size, Difficulty);
                 // Create an instance of frmMineSweeper with board passed in
                 FrmMineSweeper frmMineSweeper = new FrmMineSweeper(board);
                 // Show the minesweeper game
