@@ -151,13 +151,10 @@ namespace MineSweeperGUI
 
                     // Set gameOver to true, breaking gameplay loop
                     gameOn = false;
+                    // Ensure user can no longer interact with the board
+                    pnlGame.Enabled = false;
                 }
 
-                //When game is over, exit the application
-                if (gameOn == false)
-                {
-                    Application.Exit();
-                }
             }
 
         }
@@ -246,6 +243,9 @@ namespace MineSweeperGUI
                 btn.Enabled = true;
                 btn.Text = "";
             }
+            // Enable the panel the boards are on
+            // allow for user input again
+            pnlGame.Enabled = true;
             //finally, update the board
             UpdateButtons();
         }
