@@ -15,9 +15,13 @@ namespace MineSweeperGUI
         // Class level variables
         private Board board;
         private BoardLogic boardLogic;
+        // TimeSpan object to track time
         TimeSpan timeSpan = new TimeSpan();
+        // Helper Boolean to count time when appropriate
         bool gameOn = false;
+        // Instantiate buttons
         Button[,] buttons;
+        // Initialize gameScore to keep track of user's score
         int gameScore = 0;
 
         public FrmMineSweeper(Board gameBoard)
@@ -89,7 +93,7 @@ namespace MineSweeperGUI
             {
                 // Mark game as started, then start the game timer.
                 gameOn = true;
-
+                tmrStopWatch.Start();
             }
             // Declare and initialize
             // Cast the sender object to a Button
@@ -109,12 +113,16 @@ namespace MineSweeperGUI
             {
                 if (board.Cells[row, col].IsFlagged)
                 {
+                    // Unflag the cell
                     board.Cells[row, col].IsFlagged = false;
+                    // Reset the background image of the cell
                     buttons[row, col].BackgroundImage = ResourceImages.Tile2;
                 }
                 else
                 {
+                    // Flag the cell
                     board.Cells[row, col].IsFlagged = true;
+                    // Set the background image of the cell to be the flag
                     buttons[row, col].BackgroundImage = ResourceImages.Flag;
                 }
                 UpdateButtons();
@@ -146,10 +154,12 @@ namespace MineSweeperGUI
                 // If user won the game
                 if (state == Board.GameStatus.Won)
                 {
+                    // Stop the timer
+                    tmrStopWatch.Stop();
                     // Give celebratory message
                     MessageBox.Show("Congratulations! You've won the game!");
 
-                    // Set gameOver to true, breaking gameplay loop
+                    // Set gameOver to true
                     gameOn = false;
                     // Ensure user can no longer interact with the board
                     pnlGame.Enabled = false;
@@ -157,10 +167,11 @@ namespace MineSweeperGUI
                 // If user lost the game
                 else if (state == Board.GameStatus.Lost)
                 {
+                    // Stop the timer
+                    tmrStopWatch.Stop();
                     // Give game over message
                     MessageBox.Show("Sorry, you hit a bomb. Game over!");
-
-                    // Set gameOver to true, breaking gameplay loop
+                    // Set gameOver to true
                     gameOn = false;
                     // Ensure user can no longer interact with the board
                     pnlGame.Enabled = false;
@@ -179,7 +190,7 @@ namespace MineSweeperGUI
         {
             if (gameOn)
             {
-                tmrStopWatch.Start();
+                
                 timeSpan = timeSpan.Add(TimeSpan.FromMilliseconds(tmrStopWatch.Interval));
                 lblTime.Text = timeSpan.ToString();
             }
@@ -213,11 +224,14 @@ namespace MineSweeperGUI
                         {
                             // Set background to gold indicating it's a reward
                             buttons[row, col].BackgroundImage = ResourceImages.Gold;
+                            // Disable the button
                             buttons[row, col].Enabled = false;
                         }
                         else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
                         {
+                            // Disable the button so the user can't interact with it
                             buttons[row, col].Enabled = false;
+                            // Add to the score based off of the number of bomb neighbors
                             gameScore += board.Cells[row, col].NumberOfBombNeighbors;
                             // Switch statement
                             // Based on # of bomb neighbors, set the background image according to the number
