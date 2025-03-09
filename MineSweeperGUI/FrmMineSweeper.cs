@@ -61,6 +61,10 @@ namespace MineSweeperGUI
                     buttons[row, col].Top = col * buttonSize;
                     // Set button color
                     buttons[row, col].BackColor = SystemColors.Control;
+                    // Set button background properties
+                    buttons[row, col].BackgroundImageLayout = ImageLayout.Stretch;
+                    // Set button background
+                    buttons[row, col].BackgroundImage = ResourceImages.Tile1;
                     // Assign cell click event handler to each button
                     buttons[row, col].MouseDown += BtnCellMouseDownEH;
                     // Tag a point to each button
@@ -184,6 +188,7 @@ namespace MineSweeperGUI
                     //set the contents of the button depending on what the corresponding cell if visited or flagged
                     if (board.Cells[row, col].IsVisited)
                     {
+                        buttons[row, col].BackgroundImage = ResourceImages.TileFlat;
                         if (board.Cells[row, col].IsBomb)
                         {
                             //buttons[row, col].Text = "B";
@@ -204,7 +209,6 @@ namespace MineSweeperGUI
                         {
                             buttons[row, col].Enabled = false;
                         }
-                        buttons[row, col].BackColor = Color.Gray;
                     }
                     else if (board.Cells[row, col].IsFlagged)
                     {
