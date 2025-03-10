@@ -99,7 +99,7 @@ namespace MineSweeperGUI
                 FrmMineSweeper frmMineSweeper = new FrmMineSweeper(board);
                 // Show the minesweeper game
                 frmMineSweeper.Show();
-                //
+                
             }
             else
             {
@@ -115,6 +115,7 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void BtnExitClickEH(object sender, EventArgs e)
         {
+            // Close the form
             this.Close();
         }
     }
