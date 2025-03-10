@@ -22,8 +22,7 @@ namespace MineSweeperGUI
 
     public partial class FrmGameSettings : Form
     {
-        // Initialize bool determining whether to start game along with values to track the settings
-        bool startGame = false;
+        // Declare and Initialize boardSize and boardDifficulty to be passed
         int boardSize = 4;
         int boardDifficulty = -1;
 
