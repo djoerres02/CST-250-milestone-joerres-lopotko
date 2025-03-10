@@ -33,12 +33,6 @@ namespace MineSweeperGUI
         public FrmGameSettings()
         {
             InitializeComponent();
-            // Initialize and declare board size & difficulty
-            int boardSize = 4;
-            int boardDifficulty = 0;
-            
-            // Instantiate board
-            //board = new Board(boardSize, boardDifficulty);
         }
 
         /// <summary>
@@ -105,7 +99,6 @@ namespace MineSweeperGUI
                 FrmMineSweeper frmMineSweeper = new FrmMineSweeper(board);
                 // Show the minesweeper game
                 frmMineSweeper.Show();
-                
             }
             else
             {
