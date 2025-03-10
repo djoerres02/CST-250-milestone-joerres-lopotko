@@ -37,7 +37,7 @@ namespace MineSweeperGUI
             SetUpButtons();
             // Setup the game's time label
             lblTime.Text = timeSpan.ToString();
-            
+
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace MineSweeperGUI
                     board.RewardsRemaining++;
                 }
 
-                
+
 
                 //After move is made, update the board
                 UpdateButtons();
@@ -206,7 +206,7 @@ namespace MineSweeperGUI
         /// <param name="col"></param>
         private void UpdateButtons()
         {
-            
+
             //walkthrough the grid of buttons, updating each one with the corresponding cells contents
             for (int row = 0; row < board.Size; row++)
             {
@@ -220,7 +220,7 @@ namespace MineSweeperGUI
                         if (board.Cells[row, col].IsBomb)
                         {
                             // Set background to a skull indicating it's a bomb
-                            buttons[row,col].BackgroundImage = ResourceImages.Skull;
+                            buttons[row, col].BackgroundImage = ResourceImages.Skull;
                         }
                         else if (board.Cells[row, col].HasSpecialReward)
                         {
@@ -357,6 +357,17 @@ namespace MineSweeperGUI
             boardLogic.UseSpecialBonus();
             //update the board once again
             UpdateButtons();
+        }
+
+        /// <summary>
+        /// Button to exit the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnExitClickEH(object sender, EventArgs e)
+        {
+            // Close the game form
+            this.Close();
         }
     }
 }

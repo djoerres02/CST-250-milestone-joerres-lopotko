@@ -37,6 +37,7 @@
             radEasy = new RadioButton();
             lblSize = new Label();
             btnStartGame = new Button();
+            btnExit = new Button();
             ((System.ComponentModel.ISupportInitialize)trkSizeBoard).BeginInit();
             grpLevel.SuspendLayout();
             SuspendLayout();
@@ -129,7 +130,7 @@
             // 
             // btnStartGame
             // 
-            btnStartGame.Location = new Point(105, 234);
+            btnStartGame.Location = new Point(48, 235);
             btnStartGame.Name = "btnStartGame";
             btnStartGame.Size = new Size(75, 23);
             btnStartGame.TabIndex = 4;
@@ -137,11 +138,22 @@
             btnStartGame.UseVisualStyleBackColor = true;
             btnStartGame.Click += BtnStartGameClickEH;
             // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(151, 235);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(140, 23);
+            btnExit.TabIndex = 5;
+            btnExit.Text = "Exit Settings and Game";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += BtnExitClickEH;
+            // 
             // FrmGameSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(323, 285);
+            Controls.Add(btnExit);
             Controls.Add(btnStartGame);
             Controls.Add(grpLevel);
             Controls.Add(label3);
@@ -168,5 +180,6 @@
         private RadioButton radEasy;
         private Label lblSize;
         private Button btnStartGame;
+        private Button btnExit;
     }
 }

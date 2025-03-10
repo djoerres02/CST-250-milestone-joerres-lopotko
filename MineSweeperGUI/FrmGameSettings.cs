@@ -91,20 +91,33 @@ namespace MineSweeperGUI
             // Initial board difficulty is set to 0, a placeholder
             if (boardDifficulty > 0)
             {
-                //instantiate a board with the chosen values
+                // Disable start game button, disable inputs for size and difficulty
+                btnStartGame.Enabled = false;
+                trkSizeBoard.Enabled = false;
+                grpLevel.Enabled = false;
+                // Instantiate a board with the chosen values
                 Board board = new Board(boardSize, boardDifficulty);
                 // Create an instance of frmMineSweeper with board passed in
                 FrmMineSweeper frmMineSweeper = new FrmMineSweeper(board);
                 // Show the minesweeper game
                 frmMineSweeper.Show();
-                // Hide the game setting form
-                this.Hide();
+                //
             }
             else
             {
                 // Inform the user to select a difficulty
                 MessageBox.Show("Please ensure a difficulty is selected.");
             }
+        }
+
+        /// <summary>
+        /// Button to exit the game settings form and game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnExitClickEH(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
