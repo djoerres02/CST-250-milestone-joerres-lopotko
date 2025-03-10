@@ -49,7 +49,7 @@ namespace MineSweeperGUI
             // Calculate the size of each button based on
             // the panel width and number of buttons needed.
             int buttonSize = pnlGame.Height / board.Size;
-            //pnlGame.Width = (board.Size * 100);
+            
             // Set the panel to be square
             pnlGame.Width = pnlGame.Height;
 
