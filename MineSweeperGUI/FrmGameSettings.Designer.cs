@@ -44,11 +44,12 @@
             // 
             // trkSizeBoard
             // 
-            trkSizeBoard.Location = new Point(12, 57);
+            trkSizeBoard.Location = new Point(14, 76);
+            trkSizeBoard.Margin = new Padding(3, 4, 3, 4);
             trkSizeBoard.Maximum = 12;
             trkSizeBoard.Minimum = 4;
             trkSizeBoard.Name = "trkSizeBoard";
-            trkSizeBoard.Size = new Size(295, 45);
+            trkSizeBoard.Size = new Size(337, 56);
             trkSizeBoard.TabIndex = 0;
             trkSizeBoard.Value = 4;
             trkSizeBoard.ValueChanged += TrkSizeBoardValueChangedEH;
@@ -56,18 +57,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 39);
+            label1.Location = new Point(14, 52);
             label1.Name = "label1";
-            label1.Size = new Size(30, 15);
+            label1.Size = new Size(39, 20);
             label1.TabIndex = 1;
             label1.Text = "Size:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 9);
+            label3.Location = new Point(14, 12);
             label3.Name = "label3";
-            label3.Size = new Size(102, 15);
+            label3.Size = new Size(128, 20);
             label3.TabIndex = 2;
             label3.Text = "Play Minesweeper";
             // 
@@ -76,9 +77,11 @@
             grpLevel.Controls.Add(radDifficult);
             grpLevel.Controls.Add(radMedium);
             grpLevel.Controls.Add(radEasy);
-            grpLevel.Location = new Point(36, 108);
+            grpLevel.Location = new Point(41, 144);
+            grpLevel.Margin = new Padding(3, 4, 3, 4);
             grpLevel.Name = "grpLevel";
-            grpLevel.Size = new Size(200, 100);
+            grpLevel.Padding = new Padding(3, 4, 3, 4);
+            grpLevel.Size = new Size(229, 133);
             grpLevel.TabIndex = 3;
             grpLevel.TabStop = false;
             grpLevel.Text = "Choose A Difficulty";
@@ -86,9 +89,10 @@
             // radDifficult
             // 
             radDifficult.AutoSize = true;
-            radDifficult.Location = new Point(6, 75);
+            radDifficult.Location = new Point(7, 100);
+            radDifficult.Margin = new Padding(3, 4, 3, 4);
             radDifficult.Name = "radDifficult";
-            radDifficult.Size = new Size(67, 19);
+            radDifficult.Size = new Size(83, 24);
             radDifficult.TabIndex = 0;
             radDifficult.TabStop = true;
             radDifficult.Text = "Difficult";
@@ -98,9 +102,10 @@
             // radMedium
             // 
             radMedium.AutoSize = true;
-            radMedium.Location = new Point(6, 47);
+            radMedium.Location = new Point(7, 63);
+            radMedium.Margin = new Padding(3, 4, 3, 4);
             radMedium.Name = "radMedium";
-            radMedium.Size = new Size(70, 19);
+            radMedium.Size = new Size(85, 24);
             radMedium.TabIndex = 0;
             radMedium.TabStop = true;
             radMedium.Text = "Medium";
@@ -110,9 +115,10 @@
             // radEasy
             // 
             radEasy.AutoSize = true;
-            radEasy.Location = new Point(6, 22);
+            radEasy.Location = new Point(7, 29);
+            radEasy.Margin = new Padding(3, 4, 3, 4);
             radEasy.Name = "radEasy";
-            radEasy.Size = new Size(48, 19);
+            radEasy.Size = new Size(59, 24);
             radEasy.TabIndex = 0;
             radEasy.TabStop = true;
             radEasy.Text = "Easy";
@@ -122,17 +128,18 @@
             // lblSize
             // 
             lblSize.AutoSize = true;
-            lblSize.Location = new Point(48, 39);
+            lblSize.Location = new Point(55, 52);
             lblSize.Name = "lblSize";
-            lblSize.Size = new Size(13, 15);
+            lblSize.Size = new Size(17, 20);
             lblSize.TabIndex = 1;
             lblSize.Text = "4";
             // 
             // btnStartGame
             // 
-            btnStartGame.Location = new Point(48, 235);
+            btnStartGame.Location = new Point(55, 313);
+            btnStartGame.Margin = new Padding(3, 4, 3, 4);
             btnStartGame.Name = "btnStartGame";
-            btnStartGame.Size = new Size(75, 23);
+            btnStartGame.Size = new Size(86, 31);
             btnStartGame.TabIndex = 4;
             btnStartGame.Text = "Start Game";
             btnStartGame.UseVisualStyleBackColor = true;
@@ -140,9 +147,11 @@
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(151, 235);
+            btnExit.AutoSize = true;
+            btnExit.Location = new Point(173, 313);
+            btnExit.Margin = new Padding(3, 4, 3, 4);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(140, 23);
+            btnExit.Size = new Size(172, 31);
             btnExit.TabIndex = 5;
             btnExit.Text = "Exit Settings and Game";
             btnExit.UseVisualStyleBackColor = true;
@@ -150,9 +159,9 @@
             // 
             // FrmGameSettings
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(323, 285);
+            ClientSize = new Size(369, 380);
             Controls.Add(btnExit);
             Controls.Add(btnStartGame);
             Controls.Add(grpLevel);
@@ -160,6 +169,7 @@
             Controls.Add(lblSize);
             Controls.Add(label1);
             Controls.Add(trkSizeBoard);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmGameSettings";
             Text = "Start a New Game";
             ((System.ComponentModel.ISupportInitialize)trkSizeBoard).EndInit();
