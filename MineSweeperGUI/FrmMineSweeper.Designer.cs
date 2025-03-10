@@ -37,6 +37,7 @@
             btnRestart = new Button();
             tmrStopWatch = new System.Windows.Forms.Timer(components);
             btnUseReward = new Button();
+            label3 = new Label();
             SuspendLayout();
             // 
             // pnlGame
@@ -109,11 +110,20 @@
             btnUseReward.Visible = false;
             btnUseReward.Click += BtnUseRewardClickEH;
             // 
+            // label3
+            // 
+            label3.Location = new Point(549, 298);
+            label3.Name = "label3";
+            label3.Size = new Size(146, 56);
+            label3.TabIndex = 4;
+            label3.Text = "Left Click to visit a cell, Right Click to flag a cell";
+            // 
             // FrmMineSweeper
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(707, 450);
+            Controls.Add(label3);
             Controls.Add(btnUseReward);
             Controls.Add(btnRestart);
             Controls.Add(lblScore);
@@ -137,5 +147,6 @@
         private Button btnRestart;
         private System.Windows.Forms.Timer tmrStopWatch;
         private Button btnUseReward;
+        private Label label3;
     }
 }
