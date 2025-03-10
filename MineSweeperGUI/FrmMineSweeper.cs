@@ -246,6 +246,7 @@ namespace MineSweeperGUI
             {
                 btn.Enabled = true;
                 btn.Text = "";
+                btn.BackColor = default(Color);
             }
             //finally, update the board
             UpdateButtons();
