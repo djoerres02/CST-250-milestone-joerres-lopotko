@@ -22,7 +22,7 @@ namespace MineSweeperGUI
         TimeSpan timeSpan = new TimeSpan();
         // Boolean to indicate the game is running
         bool gameOn = false;
-        // 2D array to store btton references
+        // 2D array to store button references
         Button[,] buttons;
         // Initialize gameScore to keep track of user's score
         int gameScore = 0;
@@ -274,6 +274,7 @@ namespace MineSweeperGUI
                             buttons[row, col].Enabled = false;
                         }
                     }
+                    // If cell is flagged, set it's background to represent a flag
                     else if (board.Cells[row, col].IsFlagged)
                     {
                         buttons[row, col].BackgroundImage = ResourceImages.Flag;
@@ -285,11 +286,12 @@ namespace MineSweeperGUI
                     }
                 }
             }
-            //update visibility of reward button if user has a reward to use.
+            // Update visibility of reward button if user has a reward to use.
             if (board.RewardsRemaining > 0)
             {
                 btnUseReward.Visible = true;
             }
+            // If no reward is available, hide the button
             else
             {
                 btnUseReward.Visible = false;

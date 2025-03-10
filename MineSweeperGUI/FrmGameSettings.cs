@@ -26,8 +26,7 @@ namespace MineSweeperGUI
         int boardSize = 4;
         int boardDifficulty = -1;
 
-        // Setup board
-        //public Board board { get; set; }
+        
 
         public FrmGameSettings()
         {
