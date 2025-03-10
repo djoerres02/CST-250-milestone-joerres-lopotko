@@ -4,6 +4,9 @@
  * Milestone 4
  * 2/26/2025
  * Completed Together
+ * Used TimeSpan code from Activity 5
+ * Used code to populate buttons from Activity 2
+ * Inserted minesweeper images to project via resource file ResourceImages.resx (https://youtu.be/rN807Rk8UoI)
  */
 using MineSweeperClasses.Models;
 using MineSweeperClasses.Services.BusinessLogicLayer;
@@ -15,9 +18,14 @@ namespace MineSweeperGUI
         // Class level variables
         private Board board;
         private BoardLogic boardLogic;
+        // TimeSpan object to track time
         TimeSpan timeSpan = new TimeSpan();
+        // Boolean to indicate the game is running
         bool gameOn = false;
+        // 2D array to store btton references
         Button[,] buttons;
+        // Initialize gameScore to keep track of user's score
+        int gameScore = 0;
 
         public FrmMineSweeper(Board gameBoard)
         {
@@ -29,6 +37,7 @@ namespace MineSweeperGUI
             SetUpButtons();
             // Setup the game's time label
             lblTime.Text = timeSpan.ToString();
+            
         }
 
         /// <summary>
@@ -59,8 +68,10 @@ namespace MineSweeperGUI
                     // use the left and top sides
                     buttons[row, col].Left = row * buttonSize;
                     buttons[row, col].Top = col * buttonSize;
-                    // Set button color
-                    buttons[row, col].BackColor = SystemColors.Control;
+                    // Set button background properties
+                    buttons[row, col].BackgroundImageLayout = ImageLayout.Stretch;
+                    // Set default button background
+                    buttons[row, col].BackgroundImage = ResourceImages.Tile2;
                     // Assign cell click event handler to each button
                     buttons[row, col].MouseDown += BtnCellMouseDownEH;
                     // Tag a point to each button
@@ -85,7 +96,7 @@ namespace MineSweeperGUI
             {
                 // Mark game as started, then start the game timer.
                 gameOn = true;
-
+                tmrStopWatch.Start();
             }
             // Declare and initialize
             // Cast the sender object to a Button
@@ -96,6 +107,7 @@ namespace MineSweeperGUI
             int row = point.Y;
             int col = point.X;
 
+
             // Display choice to user (Testing purposes)
             //MessageBox.Show($"Cell {row},{col} has been selected");
 
@@ -104,11 +116,17 @@ namespace MineSweeperGUI
             {
                 if (board.Cells[row, col].IsFlagged)
                 {
+                    // Unflag the cell
                     board.Cells[row, col].IsFlagged = false;
+                    // Reset the background image of the cell
+                    buttons[row, col].BackgroundImage = ResourceImages.Tile2;
                 }
                 else
                 {
+                    // Flag the cell
                     board.Cells[row, col].IsFlagged = true;
+                    // Set the background image of the cell to be the flag
+                    buttons[row, col].BackgroundImage = ResourceImages.Flag;
                 }
                 UpdateButtons();
             }
@@ -128,6 +146,8 @@ namespace MineSweeperGUI
                     board.RewardsRemaining++;
                 }
 
+                
+
                 //After move is made, update the board
                 UpdateButtons();
 
@@ -137,27 +157,29 @@ namespace MineSweeperGUI
                 // If user won the game
                 if (state == Board.GameStatus.Won)
                 {
+                    // Stop the timer
+                    tmrStopWatch.Stop();
                     // Give celebratory message
                     MessageBox.Show("Congratulations! You've won the game!");
 
-                    // Set gameOver to true, breaking gameplay loop
+                    // Set gameOver to true
                     gameOn = false;
+                    // Ensure user can no longer interact with the board
+                    pnlGame.Enabled = false;
                 }
                 // If user lost the game
                 else if (state == Board.GameStatus.Lost)
                 {
+                    // Stop the timer
+                    tmrStopWatch.Stop();
                     // Give game over message
                     MessageBox.Show("Sorry, you hit a bomb. Game over!");
-
-                    // Set gameOver to true, breaking gameplay loop
+                    // Set gameOver to true
                     gameOn = false;
+                    // Ensure user can no longer interact with the board
+                    pnlGame.Enabled = false;
                 }
 
-                //When game is over, exit the application
-                if (gameOn == false)
-                {
-                    Application.Exit();
-                }
             }
 
         }
@@ -169,16 +191,22 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void TmrStopwatchTickEH(object sender, EventArgs e)
         {
-
+            if (gameOn)
+            {
+                timeSpan = timeSpan.Add(TimeSpan.FromMilliseconds(tmrStopWatch.Interval));
+                lblTime.Text = timeSpan.ToString();
+            }
         }
 
         /// <summary>
-        /// updates grid of buttons to refllect the board
+        /// Updates grid of buttons to reflect the board
+        /// also update the game score
         /// </summary>
         /// <param name="row"></param>
         /// <param name="col"></param>
         private void UpdateButtons()
         {
+            
             //walkthrough the grid of buttons, updating each one with the corresponding cells contents
             for (int row = 0; row < board.Size; row++)
             {
@@ -187,29 +215,68 @@ namespace MineSweeperGUI
                     //set the contents of the button depending on what the corresponding cell if visited or flagged
                     if (board.Cells[row, col].IsVisited)
                     {
+                        // Set background to a flat tile indicating it's visited
+                        buttons[row, col].BackgroundImage = ResourceImages.TileFlat;
                         if (board.Cells[row, col].IsBomb)
                         {
-                            buttons[row, col].Text = "B";
+                            // Set background to a skull indicating it's a bomb
+                            buttons[row,col].BackgroundImage = ResourceImages.Skull;
                         }
                         else if (board.Cells[row, col].HasSpecialReward)
                         {
-                            buttons[row, col].Text = "R";
+                            // Set background to gold indicating it's a reward
+                            buttons[row, col].BackgroundImage = ResourceImages.Gold;
+                            // Disable the button
                             buttons[row, col].Enabled = false;
                         }
                         else if (board.Cells[row, col].NumberOfBombNeighbors > 0)
                         {
-                            buttons[row, col].Text = "" + board.Cells[row, col].NumberOfBombNeighbors;
+                            // Disable the button so the user can't interact with it
                             buttons[row, col].Enabled = false;
+                            // Add to the score based off of the number of bomb neighbors
+                            gameScore += board.Cells[row, col].NumberOfBombNeighbors;
+                            // Switch statement
+                            // Based on # of bomb neighbors, set the background image according to the number
+                            // Also add to the point counter
+                            switch (board.Cells[row, col].NumberOfBombNeighbors)
+                            {
+                                case 1:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number1;
+                                    break;
+                                case 2:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number2;
+                                    break;
+                                case 3:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number3;
+                                    break;
+                                case 4:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number4;
+                                    break;
+                                case 5:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number5;
+                                    break;
+                                case 6:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number6;
+                                    break;
+                                case 7:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number7;
+                                    break;
+                                default:
+                                    buttons[row, col].BackgroundImage = ResourceImages.Number8;
+                                    break;
+                            }
+                            // Update the score label
+                            lblScore.Text = gameScore.ToString();
                         }
+                        // If button has no neighbors, disable it
                         else
                         {
                             buttons[row, col].Enabled = false;
                         }
-                        buttons[row, col].BackColor = Color.Gray;
                     }
                     else if (board.Cells[row, col].IsFlagged)
                     {
-                        buttons[row, col].Text = "F";
+                        buttons[row, col].BackgroundImage = ResourceImages.Flag;
                     }
                     //if cell isn't visited or flagged, leave it empty
                     else
@@ -234,6 +301,12 @@ namespace MineSweeperGUI
         /// </summary>
         private void ResetBoard()
         {
+            // Ensure time is stopped
+            tmrStopWatch.Stop();
+            // Ensure gameOn is set to false, so we can correctly start the timer
+            // when the user clicks a button
+            gameOn = false;
+
             //get the size and difficulty from the previous board to instantiate a new board
             int size = board.Size;
             int difficulty = board.Difficulty;
@@ -245,9 +318,20 @@ namespace MineSweeperGUI
             foreach (Button btn in pnlGame.Controls)
             {
                 btn.Enabled = true;
-                btn.Text = "";
-                btn.BackColor = default(Color);
+                // Reset background image
+                btn.BackgroundImage = ResourceImages.Tile2;
             }
+            // Enable the panel the boards are on
+            // allow for user input again
+            pnlGame.Enabled = true;
+            // Reset the score
+            gameScore = 0;
+            // Update the score label
+            lblScore.Text = gameScore.ToString();
+            // Reset the timer
+            timeSpan = TimeSpan.Zero;
+            // Update the timer label
+            lblTime.Text = timeSpan.ToString();
             //finally, update the board
             UpdateButtons();
         }
