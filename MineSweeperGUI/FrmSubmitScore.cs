@@ -14,17 +14,17 @@ namespace MineSweeperGUI
     {
         // Declare and initialize
         private readonly int gameScore;
-        private readonly DateTime gameDate;
-        public FrmSubmitScore(int gameScore, DateTime gameDate)
+        private readonly TimeSpan gameTime;
+        public FrmSubmitScore(int gameScore, TimeSpan gameTime)
         {
             InitializeComponent();
 
-            // Pass in gameScore & gameDate
+            // Pass in gameScore & gameTime
             this.gameScore = gameScore;
-            this.gameDate = gameDate;
+            this.gameTime = gameTime;
 
-
-            lblStats.Text = $"You have ended with {gameScore.ToString()} points on {gameDate.ToString()}";
+            // Pass in the game stats to lblStats
+            lblStats.Text = $"You have ended with {gameScore} points in {gameTime.ToString()}!";
         }
 
         /// <summary>

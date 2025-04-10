@@ -12,14 +12,21 @@ namespace MineSweeperClasses.Models
         private int id;
         private string name;
         private int score;
-        private DateTime date;
+        private TimeSpan time;
 
-        public GameStat(int Id, string Name, int Score, DateTime Date)
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="Name"></param>
+        /// <param name="Score"></param>
+        /// <param name="Time"></param>
+        public GameStat(int Id, string Name, int Score, TimeSpan Time)
         {
             id = Id;
             name = Name;
             score = Score;
-            date = Date;
+            time = Time;
         }
     }
 }
