@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace MineSweeperClasses.Models
 {
@@ -11,6 +12,14 @@ namespace MineSweeperClasses.Models
         private int id;
         private string name;
         private int score;
-        private TimeSpan gameTime;
+        private DateTime date;
+
+        public GameStat(int Id, string Name, int Score, DateTime Date)
+        {
+            id = Id;
+            name = Name;
+            score = Score;
+            date = Date;
+        }
     }
 }
