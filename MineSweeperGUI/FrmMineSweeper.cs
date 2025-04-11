@@ -161,11 +161,13 @@ namespace MineSweeperGUI
                     tmrStopWatch.Stop();
                     // Give celebratory message
                     MessageBox.Show("Congratulations! You've won the game!");
-
                     // Set gameOver to true
                     gameOn = false;
                     // Ensure user can no longer interact with the board
                     pnlGame.Enabled = false;
+                    // Prompt user to submit score
+                    FrmSubmitScore frmSubmitScore = new FrmSubmitScore(gameScore, timeSpan);
+                    frmSubmitScore.Show();
                 }
                 // If user lost the game
                 else if (state == Board.GameStatus.Lost)
