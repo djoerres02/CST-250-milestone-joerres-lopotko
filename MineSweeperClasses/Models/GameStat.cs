@@ -8,9 +8,17 @@ namespace MineSweeperClasses.Models
 {
     public class GameStat
     {
-        private int id;
-        private string name;
-        private int score;
-        private TimeSpan gameTime;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Score { get; set; }
+        public TimeSpan TimeSpan { get; set; }
+
+        public GameStat(string name,  int score, TimeSpan timeSpan)
+        {
+            Name = name;
+            Score = score;
+            TimeSpan = timeSpan;
+            Id = 0;
+        }
     }
 }
