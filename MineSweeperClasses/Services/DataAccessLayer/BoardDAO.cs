@@ -134,12 +134,14 @@ namespace MineSweeperClasses.Services.DataAccessLayer
             // Sort the list in descending order by score
             _highScores = _highScores.OrderByDescending(s => s.Score).ToList();
 
-            //write highscores to file
-            WriteHighScoresToFile();
             //update the ids
             UpdateIds();
+
+            //write highscores to file
+            WriteHighScoresToFile();
+            
             //return index of new highscore
-            return _highScores.IndexOf(highScore);
+            return _highScores.Count;
         }
 
         /// <summary>
@@ -155,6 +157,15 @@ namespace MineSweeperClasses.Services.DataAccessLayer
                     _highScores[i].Id = i + 1;
                 }
             }
+        }
+
+        /// <summary>
+        /// returns the list of highscores
+        /// </summary>
+        /// <returns></returns>
+        public List<GameStat> GetHighScores()
+        {
+            return _highScores;
         }
     }
 }
