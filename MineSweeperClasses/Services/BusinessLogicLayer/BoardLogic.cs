@@ -5,6 +5,7 @@
  * Completed Together
  */
 using MineSweeperClasses.Models;
+using MineSweeperClasses.Services.DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -19,6 +20,8 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
 {
     public class BoardLogic
     {
+        //class level variables
+        private BoardDAO _boardDAO = new BoardDAO();
         //Field Variables
         public Board board { get; set; }
 
