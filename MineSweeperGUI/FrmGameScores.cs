@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MineSweeperClasses.Services.BusinessLogicLayer;
 
 namespace MineSweeperGUI
 {
     public partial class FrmGameScores : Form
     {
+        // Instantiate ScoreLogic
+        ScoreLogic scoreLogic;
         public FrmGameScores()
         {
             InitializeComponent();
+            scoreLogic = new ScoreLogic();
+            // Load high scores into our datagrid
+            dgvGameScores.DataSource = scoreLogic.GetHighScores();
         }
+
+
     }
 }
