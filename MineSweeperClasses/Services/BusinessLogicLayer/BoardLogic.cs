@@ -31,6 +31,15 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             InitializeBoard();
         }
 
+        /// <summary>
+        /// Constructor allowing for instantiation of any logic
+        /// not pertaining to the board
+        /// </summary>
+        public BoardLogic()
+        {
+            InitializeBoard();
+        }
+
         // Instantiate random
         Random random = new Random();
 

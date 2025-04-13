@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MineSweeperClasses.Services.BusinessLogicLayer;
 
 namespace MineSweeperGUI
 {
     public partial class FrmSubmitScore : Form
     {
+        // Instantiate business logic
+        BoardLogic boardLogic = new BoardLogic();
         // Declare and initialize
         private readonly int gameScore;
         private readonly TimeSpan gameTime;
+        private string userName;
         public FrmSubmitScore(int gameScore, TimeSpan gameTime)
         {
             InitializeComponent();
@@ -41,7 +45,11 @@ namespace MineSweeperGUI
                 lblWarning.Visible = false;
 
                 // Submit the score
+                userName = txtName.Text;
+                boardLogic.AddHighScore(userName, gameScore, gameTime);
 
+                // Close the form
+                this.Close();
             }
             else
             {
