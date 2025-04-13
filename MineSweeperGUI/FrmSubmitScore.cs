@@ -14,7 +14,7 @@ namespace MineSweeperGUI
     public partial class FrmSubmitScore : Form
     {
         // Instantiate business logic
-        BoardLogic boardLogic = new BoardLogic();
+        ScoreLogic scoreLogic = new ScoreLogic();
         // Declare and initialize
         private readonly int gameScore;
         private readonly TimeSpan gameTime;
@@ -41,15 +41,21 @@ namespace MineSweeperGUI
             // If the input name isn't null or white space
             if (!String.IsNullOrWhiteSpace(txtName.Text))
             {
+                // Disable submission
+                btnSubmit.Enabled = false;
+
                 // Hide the warning
                 lblWarning.Visible = false;
 
                 // Submit the score
                 userName = txtName.Text;
-                boardLogic.AddHighScore(userName, gameScore, gameTime);
+                scoreLogic.AddHighScore(userName, gameScore, gameTime);
 
-                // Close the form
-                this.Close();
+
+                // Open FrmGameScores
+                FrmGameScores frmGameScores = new FrmGameScores();
+                frmGameScores.ShowDialog();
+                
             }
             else
             {
