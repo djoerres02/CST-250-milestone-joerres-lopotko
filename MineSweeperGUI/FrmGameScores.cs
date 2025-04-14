@@ -15,7 +15,7 @@ namespace MineSweeperGUI
     {
         // Instantiate logic layer
         private BoardLogic _boardLogic;
-        private BindingSource _scoresBindingSource;
+        private BindingSource _scoresBindingSource = new BindingSource();
 
         /// <summary>
         /// Form Constructor, accepts submitted score
