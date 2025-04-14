@@ -13,8 +13,9 @@ namespace MineSweeperGUI
 {
     public partial class FrmGameScores : Form
     {
-        // Instantiate ScoreLogic
-        private ScoreLogic _scoreLogic;
+        // Instantiate logic layer
+        private BoardLogic _boardLogic;
+        private BindingSource _scoresBindingSource;
 
         /// <summary>
         /// Form Constructor, accepts submitted score
@@ -22,13 +23,14 @@ namespace MineSweeperGUI
         /// <param name="userName"></param>
         /// <param name="gameScore"></param>
         /// <param name="time"></param>
-        public FrmGameScores(string userName = "", int gameScore = 0, TimeSpan timeSpan = default)
+        public FrmGameScores(BoardLogic boardLogic)
         {
             InitializeComponent();
             // Initialize ScoreLogic
-            _scoreLogic = new ScoreLogic();
+            this._boardLogic = boardLogic;
             // Load high scores into our datagrid
-            dgvGameScores.DataSource = _scoreLogic.GetHighScores();
+            _scoresBindingSource.DataSource = _boardLogic.GetHighScores();
+            dgvGameScores.DataSource = _scoresBindingSource;
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace MineSweeperGUI
                 //string message = _scoreLogic.WriteHighScoresToFile(sfd.FileName);
                 // Change later?
                 // Show the message
-                MessageBox.Show(_scoreLogic.WriteHighScoresToFile(sfd.FileName));
+                MessageBox.Show(_boardLogic.WriteHighScoresToFile(sfd.FileName));
             }
         }
 
@@ -77,11 +79,11 @@ namespace MineSweeperGUI
             {
                 // Message to show based on returned result
                 //string message = _scoreLogic.ReadHighScoresFromFile(ofd.FileName);
-                MessageBox.Show(_scoreLogic.ReadHighScoresFromFile(ofd.FileName));
+                MessageBox.Show(_boardLogic.ReadHighScoresFromFile(ofd.FileName));
                 // Refresh datasource
                 dgvGameScores.DataSource = null;
                 // Get the scores
-                dgvGameScores.DataSource = _scoreLogic.GetHighScores();
+                dgvGameScores.DataSource = _boardLogic.GetHighScores();
             }
         }
 
