@@ -71,19 +71,21 @@
             // tsmSave
             // 
             tsmSave.Name = "tsmSave";
-            tsmSave.Size = new Size(180, 22);
+            tsmSave.Size = new Size(100, 22);
             tsmSave.Text = "Save";
+            tsmSave.Click += TsmSaveClickEH;
             // 
             // tsmLoad
             // 
             tsmLoad.Name = "tsmLoad";
-            tsmLoad.Size = new Size(180, 22);
+            tsmLoad.Size = new Size(100, 22);
             tsmLoad.Text = "Load";
+            tsmLoad.Click += TsmLoadClickEH;
             // 
             // tsmExit
             // 
             tsmExit.Name = "tsmExit";
-            tsmExit.Size = new Size(180, 22);
+            tsmExit.Size = new Size(100, 22);
             tsmExit.Text = "Exit";
             // 
             // tsmSort
@@ -98,18 +100,21 @@
             tsmByName.Name = "tsmByName";
             tsmByName.Size = new Size(180, 22);
             tsmByName.Text = "By Name";
+            tsmByName.Click += TsmByNameClickEH;
             // 
             // tsmByScore
             // 
             tsmByScore.Name = "tsmByScore";
             tsmByScore.Size = new Size(180, 22);
             tsmByScore.Text = "By Score";
+            tsmByScore.Click += TsmByScoreClickEH;
             // 
             // tsmByTime
             // 
             tsmByTime.Name = "tsmByTime";
             tsmByTime.Size = new Size(180, 22);
             tsmByTime.Text = "By Time";
+            tsmByTime.Click += TsmByTimeClickEH;
             // 
             // label1
             // 

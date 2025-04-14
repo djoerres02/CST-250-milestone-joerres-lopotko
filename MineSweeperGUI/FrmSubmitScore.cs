@@ -52,8 +52,9 @@ namespace MineSweeperGUI
                 scoreLogic.AddHighScore(userName, gameScore, gameTime);
 
 
+                // Instantiate FrmGameScores with submitted name, score, and time
+                FrmGameScores frmGameScores = new FrmGameScores(userName, gameScore, gameTime);
                 // Open FrmGameScores
-                FrmGameScores frmGameScores = new FrmGameScores();
                 frmGameScores.ShowDialog();
                 
             }
