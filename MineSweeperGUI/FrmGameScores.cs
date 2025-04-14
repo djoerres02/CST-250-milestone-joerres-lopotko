@@ -64,9 +64,6 @@ namespace MineSweeperGUI
             // If the file selection is a success, let the user know
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                // Initialize and declare message
-                //string message = _scoreLogic.WriteHighScoresToFile(sfd.FileName);
-                // Change later?
                 // Show the message
                 MessageBox.Show(_boardLogic.WriteHighScoresToFile(sfd.FileName));
             }
@@ -91,7 +88,6 @@ namespace MineSweeperGUI
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 // Message to show based on returned result
-                //string message = _scoreLogic.ReadHighScoresFromFile(ofd.FileName);
                 MessageBox.Show(_boardLogic.ReadHighScoresFromFile(ofd.FileName));
                 // Refresh datasource
                 dgvGameScores.DataSource = null;

@@ -21,7 +21,7 @@ namespace MineSweeperGUI
 {
     public partial class FrmSubmitScore : Form
     {
-        //decalre business logic
+        //declare business logic
         BoardLogic boardLogic;
         // Declare and initialize
         private readonly int gameScore;

@@ -114,15 +114,6 @@ namespace MineSweeperClasses.Services.DataAccessLayer
         }
 
         /// <summary>
-        /// Overloaded method to save highscores to the default file
-        /// </summary>
-        /// <returns></returns>
-        public string WriteHighScoresToDefaultFile()
-        {
-            return WriteHighScoresToFile(_defaultFilePath);
-        }
-
-        /// <summary>
         /// Adds a highscore to the list of highscores and trims it to a maximum of 5 scores
         /// </summary>
         /// <param name="highScore"></param>
