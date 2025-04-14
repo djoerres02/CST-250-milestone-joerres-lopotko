@@ -145,5 +145,16 @@ namespace MineSweeperGUI
             _sortByNameAsc = true;
             _sortByScoreDesc = true;
         }
+
+        /// <summary>
+        /// Handles the click event for the ok button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnOkClickEH(object sender, EventArgs e)
+        {
+            //close the current form
+            this.Close();
+        }
     }
 }

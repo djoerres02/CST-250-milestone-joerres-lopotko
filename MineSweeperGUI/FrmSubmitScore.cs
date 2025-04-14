@@ -57,6 +57,8 @@ namespace MineSweeperGUI
                 FrmGameScores frmGameScores = new FrmGameScores(boardLogic);
                 // Open FrmGameScores
                 frmGameScores.ShowDialog();
+                //close the submit score form
+                this.Close();
                 
             }
             else
