@@ -342,5 +342,75 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         {
             return _boardDAO.ReadHighScoresFromFile(fileName);
         }
+
+        /// <summary>
+        /// Method to sort scores by score
+        /// </summary>
+        /// <param name="descending"></param>
+        /// <returns></returns>
+        public List<GameStat> GetScoresSortedByScore(bool descending)
+        {
+            // Var to track current high scores
+            var scores = _boardDAO.GetHighScores();
+            // If descending is true 
+            if (descending)
+            {
+                // We then return a descending list
+                return scores.OrderByDescending(s => s.Score).ToList();
+            }
+            // If descending is false
+            else
+            {
+                // We return the normal list
+                return scores.OrderBy(s => s.Score).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Method to toggle sorting scores by alphabetical order and default order
+        /// </summary>
+        /// <param name="ascending"></param>
+        /// <returns></returns>
+        public List<GameStat> GetScoresSortedByName(bool ascending)
+        {
+            // Var scores to track current high scores
+            var scores = _boardDAO.GetHighScores();
+            
+            // If ascending is currently true
+            if (ascending)
+            {
+                // We return an alphabetical list
+                return scores.OrderBy(s => s.Name).ToList();
+            }
+            else
+            {
+                // Return opposite of alphabetical, the normal view
+                return scores.OrderByDescending(s => s.Name).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Method to sort scores by time
+        /// </summary>
+        /// <param name="ascending"></param>
+        /// <returns></returns>
+        public List<GameStat> GetScoresSortedByTime(bool ascending)
+        {
+            // Var scores to track highscores
+            var scores = _boardDAO.GetHighScores();
+
+            // If ascending is true
+            if (ascending)
+            {
+                // Return ascending list of times
+                return scores.OrderBy(s => s.TimeSpan).ToList();
+            }
+            // If ascending is false
+            else
+            {
+                // Return descending list of times
+                return scores.OrderByDescending(s => s.TimeSpan).ToList();
+            }
+        }
     }
 }

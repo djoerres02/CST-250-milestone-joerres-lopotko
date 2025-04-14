@@ -17,6 +17,11 @@ namespace MineSweeperGUI
         private BoardLogic _boardLogic;
         private BindingSource _scoresBindingSource = new BindingSource();
 
+        // Declare and initialize to track sorting
+        private bool _sortByNameAsc = true;
+        private bool _sortByScoreDesc = true;
+        private bool _sortByTimeAsc = true;
+
         /// <summary>
         /// Form Constructor, accepts submitted score
         /// </summary>
@@ -94,7 +99,12 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void TsmByNameClickEH(object sender, EventArgs e)
         {
-
+            // Set datasource based on value of passed in bool
+            _scoresBindingSource.DataSource = _boardLogic.GetScoresSortedByName(_sortByNameAsc);
+            // Set the datasource accordingly
+            dgvGameScores.DataSource = _scoresBindingSource;
+            // Switch the current state of the bool
+            _sortByNameAsc = !_sortByNameAsc;
         }
 
         /// <summary>
@@ -104,7 +114,12 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void TsmByScoreClickEH(object sender, EventArgs e)
         {
-
+            // Set datasource based on value of passed in bool
+            _scoresBindingSource.DataSource = _boardLogic.GetScoresSortedByScore(_sortByScoreDesc);
+            // Set the datasource accordingly
+            dgvGameScores.DataSource = _scoresBindingSource;
+            // Switch the current state of the bool
+            _sortByScoreDesc = !_sortByScoreDesc;
         }
 
         /// <summary>
@@ -114,7 +129,12 @@ namespace MineSweeperGUI
         /// <param name="e"></param>
         private void TsmByTimeClickEH(object sender, EventArgs e)
         {
-
+            // Set datasource based on value of passed in bool
+            _scoresBindingSource.DataSource = _boardLogic.GetScoresSortedByTime(_sortByTimeAsc);
+            // Set the datasource accordingly
+            dgvGameScores.DataSource = _scoresBindingSource;
+            // Switch the current state of the bool
+            _sortByTimeAsc = !_sortByTimeAsc;
         }
     }
 }
