@@ -9,8 +9,12 @@ namespace MineSweeperClasses.Services.DataAccessLayer
 {
     internal class BoardDAO
     {
-        //class level variables
+        // Class level variables
         private List<GameStat> _highScores;
+
+        // Default file path to save score to
+        private readonly string _defaultFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data", "Highscores.txt");
+
 
         /// <summary>
         /// default constructor
@@ -215,6 +219,15 @@ namespace MineSweeperClasses.Services.DataAccessLayer
         }
 
         /// <summary>
+        /// Overloaded method to save highscores to the default file
+        /// </summary>
+        /// <returns></returns>
+        public string WriteHighScoresToFile()
+        {
+            return WriteHighScoresToFile(_defaultFilePath);
+        }
+
+        /// <summary>
         /// Adds a highscore to the list of highscores and trims it to a maximum of 5 scores
         /// </summary>
         /// <param name="highScore"></param>
@@ -232,8 +245,8 @@ namespace MineSweeperClasses.Services.DataAccessLayer
 
             //REMOVE LATER?
             //write highscores to file
-            //WriteHighScoresToFile();
-            
+            WriteHighScoresToFile();
+
             //return index of new highscore
             return _highScores.Count;
         }

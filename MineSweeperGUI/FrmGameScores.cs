@@ -22,7 +22,7 @@ namespace MineSweeperGUI
         /// <param name="userName"></param>
         /// <param name="gameScore"></param>
         /// <param name="time"></param>
-        public FrmGameScores(string userName = "", int gameScore = 0, TimeSpan? time = null)
+        public FrmGameScores(string userName = "", int gameScore = 0, TimeSpan timeSpan = default)
         {
             InitializeComponent();
             // Initialize ScoreLogic
@@ -49,8 +49,11 @@ namespace MineSweeperGUI
             // If the file selection is a success, let the user know
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                string message = _scoreLogic.WriteHighScoresToFile(sfd.FileName);
-                MessageBox.Show(message);
+                // Initialize and declare message
+                //string message = _scoreLogic.WriteHighScoresToFile(sfd.FileName);
+                // Change later?
+                // Show the message
+                MessageBox.Show(_scoreLogic.WriteHighScoresToFile(sfd.FileName));
             }
         }
 
