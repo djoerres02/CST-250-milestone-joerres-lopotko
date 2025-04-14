@@ -166,7 +166,7 @@ namespace MineSweeperGUI
                     // Ensure user can no longer interact with the board
                     pnlGame.Enabled = false;
                     // Prompt user to submit score
-                    FrmSubmitScore frmSubmitScore = new FrmSubmitScore(gameScore, timeSpan);
+                    FrmSubmitScore frmSubmitScore = new FrmSubmitScore(gameScore, timeSpan, boardLogic);
                     frmSubmitScore.Show();
                 }
                 // If user lost the game

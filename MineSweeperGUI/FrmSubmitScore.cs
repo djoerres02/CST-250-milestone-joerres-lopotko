@@ -13,19 +13,20 @@ namespace MineSweeperGUI
 {
     public partial class FrmSubmitScore : Form
     {
-        // Instantiate business logic
-        ScoreLogic scoreLogic = new ScoreLogic();
+        //decalre business logic
+        BoardLogic boardLogic;
         // Declare and initialize
         private readonly int gameScore;
         private readonly TimeSpan gameTime;
         private string userName;
-        public FrmSubmitScore(int gameScore, TimeSpan gameTime)
+        public FrmSubmitScore(int gameScore, TimeSpan gameTime, BoardLogic boardLogic)
         {
             InitializeComponent();
 
-            // Pass in gameScore & gameTime
+            // Pass in gameScore, gameTime & boardLogic object
             this.gameScore = gameScore;
             this.gameTime = gameTime;
+            this.boardLogic = boardLogic;
 
             // Pass in the game stats to lblStats
             lblStats.Text = $"You have ended with {gameScore} points in {gameTime.ToString()}!";
@@ -49,7 +50,7 @@ namespace MineSweeperGUI
 
                 // Submit the score
                 userName = txtName.Text;
-                scoreLogic.AddHighScore(userName, gameScore, gameTime);
+                boardLogic.AddHighScore(userName, gameScore, gameTime);
 
 
                 // Instantiate FrmGameScores with submitted name, score, and time
