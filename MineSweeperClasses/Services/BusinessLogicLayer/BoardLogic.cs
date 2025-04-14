@@ -310,6 +310,13 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             return board;
         }
 
+        /// <summary>
+        /// Method that passes a gamestat object, initialized using passed values, to the DAO method
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="score"></param>
+        /// <param name="timeSpan"></param>
+        /// <returns></returns>
         public int AddHighScore(string name, int score, TimeSpan timeSpan)
         {
             //create a gamestat object with the given values and pass it to the DAO

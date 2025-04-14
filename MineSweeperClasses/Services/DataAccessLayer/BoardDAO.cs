@@ -4,7 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/* 
+ * Joseph Lopotko & Dylan Joerres
+ * CST-250
+ * Milestone 4
+ * 4/06/2025
+ * Completed Together
+ * Used TimeSpan code from Activity 5
+ * Used code from Activity 6 for file dialog and FileIO
+ */
 namespace MineSweeperClasses.Services.DataAccessLayer
 {
     internal class BoardDAO
@@ -21,9 +29,6 @@ namespace MineSweeperClasses.Services.DataAccessLayer
         /// <returns></returns>
         public string ReadHighScoresFromFile(string fileName)
         {
-            // Declare and initialize
-            //_highScores = new List<GameStat>(); dont need this if we are adding loaded highscores to 
-
             // Check if the file exists before reading
             if (File.Exists(fileName))
             {
@@ -62,7 +67,8 @@ namespace MineSweeperClasses.Services.DataAccessLayer
                             }
                         }
                     }
-                    // If the scores are read successfully, let the user know and update the IDs
+                    // If the scores are read successfully, first order the list by score descending and use that order to set the ids
+                    _highScores = _highScores.OrderByDescending(s => s.Score).ToList();
                     UpdateIds();
                     return "Highscores loaded successfully.";
                 }

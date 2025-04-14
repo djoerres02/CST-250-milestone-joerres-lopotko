@@ -8,7 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MineSweeperClasses.Services.BusinessLogicLayer;
-
+/* 
+ * Joseph Lopotko & Dylan Joerres
+ * CST-250
+ * Milestone 4
+ * 4/06/2025
+ * Completed Together
+ * Used TimeSpan code from Activity 5
+ * Used code from Activity 6 for file dialog
+ */
 namespace MineSweeperGUI
 {
     public partial class FrmSubmitScore : Form
@@ -19,6 +27,14 @@ namespace MineSweeperGUI
         private readonly int gameScore;
         private readonly TimeSpan gameTime;
         private string userName;
+
+        /// <summary>
+        /// parameterized constructor for FrmSubmitScore
+        /// displays all passed stats in a label
+        /// </summary>
+        /// <param name="gameScore"></param>
+        /// <param name="gameTime"></param>
+        /// <param name="boardLogic"></param>
         public FrmSubmitScore(int gameScore, TimeSpan gameTime, BoardLogic boardLogic)
         {
             InitializeComponent();

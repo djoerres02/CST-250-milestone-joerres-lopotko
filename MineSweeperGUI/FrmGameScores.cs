@@ -8,7 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MineSweeperClasses.Services.BusinessLogicLayer;
-
+/* 
+ * Joseph Lopotko & Dylan Joerres
+ * CST-250
+ * Milestone 4
+ * 4/06/2025
+ * Completed Together
+ * Used TimeSpan code from Activity 5
+ * Used code from Activity 6 for file dialog
+ */
 namespace MineSweeperGUI
 {
     public partial class FrmGameScores : Form

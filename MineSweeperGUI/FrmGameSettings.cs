@@ -27,7 +27,9 @@ namespace MineSweeperGUI
         int boardDifficulty = -1;
 
         
-
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public FrmGameSettings()
         {
             InitializeComponent();
