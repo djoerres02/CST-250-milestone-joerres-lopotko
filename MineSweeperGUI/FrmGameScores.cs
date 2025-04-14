@@ -105,6 +105,9 @@ namespace MineSweeperGUI
             dgvGameScores.DataSource = _scoresBindingSource;
             // Switch the current state of the bool
             _sortByNameAsc = !_sortByNameAsc;
+            // Ensure the other bools are true to prevent miscalculated sorting
+            _sortByScoreDesc = true;
+            _sortByTimeAsc = true;
         }
 
         /// <summary>
@@ -120,6 +123,9 @@ namespace MineSweeperGUI
             dgvGameScores.DataSource = _scoresBindingSource;
             // Switch the current state of the bool
             _sortByScoreDesc = !_sortByScoreDesc;
+            // Ensure the other bools are true to prevent miscalculated sorting
+            _sortByNameAsc = true;
+            _sortByTimeAsc = true;
         }
 
         /// <summary>
@@ -135,6 +141,9 @@ namespace MineSweeperGUI
             dgvGameScores.DataSource = _scoresBindingSource;
             // Switch the current state of the bool
             _sortByTimeAsc = !_sortByTimeAsc;
+            // Ensure the other bools are true to prevent miscalculated sorting
+            _sortByNameAsc = true;
+            _sortByScoreDesc = true;
         }
     }
 }
