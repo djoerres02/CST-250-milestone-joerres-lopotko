@@ -6,6 +6,7 @@
  */
 using MineSweeperClasses.Models;
 using MineSweeperClasses.Services.DataAccessLayer;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,8 +21,11 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
 {
     public class BoardLogic
     {
-        //class level variables
+        // Class level variables
         private BoardDAO _boardDAO = new BoardDAO();
+        // Lists to contain audio players and readers
+        private List<IWavePlayer> players = new();
+        private List<AudioFileReader> readers = new();
         //Field Variables
         public Board board { get; set; }
 
@@ -418,6 +422,21 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 // Return descending list of times
                 return scores.OrderByDescending(s => s.TimeSpan).ToList();
             }
+        }
+
+        /// <summary>
+        /// Method to play audio in the game
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void PlayAudio(string filePath)
+        {
+            var reader = new AudioFileReader(filePath);
+            var player = new WaveOutEvent();
+
+            player.Init(reader);
+            player.Play();
+
+            
         }
     }
 }
