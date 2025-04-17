@@ -430,13 +430,17 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// <param name="filePath"></param>
         public void PlayAudio(string filePath)
         {
+            // Declare and Initialize reader and player
             var reader = new AudioFileReader(filePath);
             var player = new WaveOutEvent();
 
+            // Initialize the reader, play the audio
             player.Init(reader);
             player.Play();
 
-            
+            // Add the player and reader to the players and readers list
+            players.Add(player);
+            readers.Add(reader);
         }
     }
 }
