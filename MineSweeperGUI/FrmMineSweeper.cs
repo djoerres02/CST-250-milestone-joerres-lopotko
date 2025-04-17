@@ -123,6 +123,8 @@ namespace MineSweeperGUI
                 }
                 else
                 {
+                    // Play flag sound effect
+                    boardLogic.PlayAudio(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "flag.mp3"));
                     // Flag the cell
                     board.Cells[row, col].IsFlagged = true;
                     // Set the background image of the cell to be the flag
@@ -137,6 +139,10 @@ namespace MineSweeperGUI
                 {
                     board = boardLogic.FloodFill(board, row, col);
                 }
+
+                // Play visit sound effect
+                boardLogic.PlayAudio(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "visitcell.mp3"));
+
                 // Mark the cell as visited
                 board.Cells[row, col].IsVisited = true;
 
@@ -174,6 +180,8 @@ namespace MineSweeperGUI
                 {
                     // Stop the timer
                     tmrStopWatch.Stop();
+                    // Play explosion audio
+                    boardLogic.PlayAudio(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "explosion.mp3"));
                     // Give game over message
                     MessageBox.Show("Sorry, you hit a bomb. Game over!");
                     // Set gameOver to true

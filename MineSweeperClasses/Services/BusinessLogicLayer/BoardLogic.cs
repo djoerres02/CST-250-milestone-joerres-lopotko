@@ -6,6 +6,7 @@
  */
 using MineSweeperClasses.Models;
 using MineSweeperClasses.Services.DataAccessLayer;
+using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
@@ -441,6 +442,15 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             // Add the player and reader to the players and readers list
             players.Add(player);
             readers.Add(reader);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void StopAudio(string filePath)
+        {
+
         }
     }
 }
