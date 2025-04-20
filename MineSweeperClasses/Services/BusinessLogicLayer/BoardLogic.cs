@@ -27,6 +27,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         // Lists to contain audio players and readers
         private List<IWavePlayer> players = new();
         private List<AudioFileReader> readers = new();
+        //
         //Field Variables
         public Board board { get; set; }
 
@@ -453,5 +454,35 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             }
            
         }
+
+        public void PlayBackgroundMusic(string filePath)
+        {
+            try
+            {
+                // Initialize new player and reader
+                var backgroundReader = new AudioFileReader(filePath);
+                var backgroundPlayer = new WaveOutEvent();
+
+                backgroundPlayer.Init(backgroundReader);
+
+                // Loop the music
+                backgroundPlayer.PlaybackStopped += (s, e) =>
+                {
+                    backgroundReader.Position = 0;
+                    backgroundPlayer.Play();
+                };
+
+                backgroundPlayer.Play();
+
+                // Store them in your existing lists
+                players.Add(backgroundPlayer);
+                readers.Add(backgroundReader);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error playing background music: {ex.Message}");
+            }
+        }
+
     }
 }

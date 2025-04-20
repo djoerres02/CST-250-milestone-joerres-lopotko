@@ -37,7 +37,8 @@ namespace MineSweeperGUI
             SetUpButtons();
             // Setup the game's time label
             lblTime.Text = timeSpan.ToString();
-
+            //start background music
+            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "background.mp3"));
         }
 
         /// <summary>
