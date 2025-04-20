@@ -124,7 +124,7 @@ namespace MineSweeperGUI
                 else
                 {
                     // Play flag sound effect
-                    boardLogic.PlayAudio(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "flg.mp3"));
+                    boardLogic.PlayAudio(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "flag.mp3"));
                     // Flag the cell
                     board.Cells[row, col].IsFlagged = true;
                     // Set the background image of the cell to be the flag
