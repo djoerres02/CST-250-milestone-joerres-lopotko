@@ -38,7 +38,7 @@ namespace MineSweeperGUI
             // Setup the game's time label
             lblTime.Text = timeSpan.ToString();
             //start background music
-            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "background.mp3"));
+            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace MineSweeperGUI
             // Calculate the size of each button based on
             // the panel width and number of buttons needed.
             int buttonSize = pnlGame.Height / board.Size;
-            
+
             // Set the panel to be square
             pnlGame.Width = pnlGame.Height;
 
@@ -381,6 +381,31 @@ namespace MineSweeperGUI
         {
             // Close the game form
             this.Close();
+        }
+
+        private void RbnMusic1CheckedChangedEH(object sender, EventArgs e)
+        {
+            //stop current music
+            boardLogic.StopMusic();
+            //play music 1
+            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
+        }
+
+        private void RbnMusic2CheckedChangedEH(object sender, EventArgs e)
+        {
+            //stop current music
+            boardLogic.StopMusic();
+            //play music 2
+            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music2.mp3"));
+
+        }
+
+        private void RbnMusic3CheckedChangedEH(object sender, EventArgs e)
+        {
+            //stop current music
+            boardLogic.StopMusic();
+            //play music 3
+            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music3.mp3"));
         }
     }
 }
