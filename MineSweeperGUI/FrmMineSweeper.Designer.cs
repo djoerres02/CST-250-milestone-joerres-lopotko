@@ -39,63 +39,61 @@
             btnUseReward = new Button();
             label3 = new Label();
             btnExit = new Button();
-            groupBox1 = new GroupBox();
+            grpMusic = new GroupBox();
             rbnMusic3 = new RadioButton();
             rbnMusic2 = new RadioButton();
             rbnMusic1 = new RadioButton();
-            groupBox1.SuspendLayout();
+            grpMusic.SuspendLayout();
             SuspendLayout();
             // 
             // pnlGame
             // 
-            pnlGame.Location = new Point(94, 16);
-            pnlGame.Margin = new Padding(3, 4, 3, 4);
+            pnlGame.Location = new Point(82, 12);
             pnlGame.Name = "pnlGame";
-            pnlGame.Size = new Size(457, 533);
+            pnlGame.Size = new Size(400, 400);
             pnlGame.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(651, 39);
+            label1.Location = new Point(570, 29);
             label1.Name = "label1";
-            label1.Size = new Size(80, 20);
+            label1.Size = new Size(64, 15);
             label1.TabIndex = 0;
             label1.Text = "Start Time:";
             // 
             // lblTime
             // 
             lblTime.AutoSize = true;
-            lblTime.Location = new Point(651, 74);
+            lblTime.Location = new Point(570, 56);
             lblTime.Name = "lblTime";
-            lblTime.Size = new Size(42, 20);
+            lblTime.Size = new Size(34, 15);
             lblTime.TabIndex = 1;
             lblTime.Text = "Time";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(651, 108);
+            label2.Location = new Point(570, 81);
             label2.Name = "label2";
-            label2.Size = new Size(49, 20);
+            label2.Size = new Size(39, 15);
             label2.TabIndex = 0;
             label2.Text = "Score:";
             // 
             // lblScore
             // 
             lblScore.AutoSize = true;
-            lblScore.Location = new Point(651, 142);
+            lblScore.Location = new Point(570, 106);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(17, 20);
+            lblScore.Size = new Size(13, 15);
             lblScore.TabIndex = 1;
             lblScore.Text = "0";
             // 
             // btnRestart
             // 
-            btnRestart.Location = new Point(653, 235);
-            btnRestart.Margin = new Padding(3, 4, 3, 4);
+            btnRestart.Location = new Point(571, 176);
             btnRestart.Name = "btnRestart";
-            btnRestart.Size = new Size(86, 31);
+            btnRestart.Size = new Size(75, 23);
             btnRestart.TabIndex = 2;
             btnRestart.Text = "Restart";
             btnRestart.UseVisualStyleBackColor = true;
@@ -109,10 +107,9 @@
             // btnUseReward
             // 
             btnUseReward.AutoSize = true;
-            btnUseReward.Location = new Point(653, 181);
-            btnUseReward.Margin = new Padding(3, 4, 3, 4);
+            btnUseReward.Location = new Point(571, 136);
             btnUseReward.Name = "btnUseReward";
-            btnUseReward.Size = new Size(102, 33);
+            btnUseReward.Size = new Size(89, 25);
             btnUseReward.TabIndex = 3;
             btnUseReward.Text = "Use Reward";
             btnUseReward.UseVisualStyleBackColor = true;
@@ -121,41 +118,43 @@
             // 
             // label3
             // 
-            label3.Location = new Point(629, 297);
+            label3.Location = new Point(550, 223);
             label3.Name = "label3";
-            label3.Size = new Size(167, 75);
+            label3.Size = new Size(146, 56);
             label3.TabIndex = 4;
             label3.Text = "Left Click to visit a cell, Right Click to flag a cell";
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(653, 376);
-            btnExit.Margin = new Padding(3, 4, 3, 4);
+            btnExit.Location = new Point(571, 282);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(86, 31);
+            btnExit.Size = new Size(75, 23);
             btnExit.TabIndex = 5;
             btnExit.Text = "Exit Game";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += BtnExitClickEH;
             // 
-            // groupBox1
+            // grpMusic
             // 
-            groupBox1.Controls.Add(rbnMusic3);
-            groupBox1.Controls.Add(rbnMusic2);
-            groupBox1.Controls.Add(rbnMusic1);
-            groupBox1.Location = new Point(674, 424);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(65, 125);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Music";
+            grpMusic.Controls.Add(rbnMusic3);
+            grpMusic.Controls.Add(rbnMusic2);
+            grpMusic.Controls.Add(rbnMusic1);
+            grpMusic.Location = new Point(590, 318);
+            grpMusic.Margin = new Padding(3, 2, 3, 2);
+            grpMusic.Name = "grpMusic";
+            grpMusic.Padding = new Padding(3, 2, 3, 2);
+            grpMusic.Size = new Size(57, 94);
+            grpMusic.TabIndex = 6;
+            grpMusic.TabStop = false;
+            grpMusic.Text = "Music";
             // 
             // rbnMusic3
             // 
             rbnMusic3.AutoSize = true;
-            rbnMusic3.Location = new Point(17, 91);
+            rbnMusic3.Location = new Point(15, 68);
+            rbnMusic3.Margin = new Padding(3, 2, 3, 2);
             rbnMusic3.Name = "rbnMusic3";
-            rbnMusic3.Size = new Size(38, 24);
+            rbnMusic3.Size = new Size(31, 19);
             rbnMusic3.TabIndex = 2;
             rbnMusic3.Text = "3";
             rbnMusic3.UseVisualStyleBackColor = true;
@@ -164,9 +163,10 @@
             // rbnMusic2
             // 
             rbnMusic2.AutoSize = true;
-            rbnMusic2.Location = new Point(17, 61);
+            rbnMusic2.Location = new Point(15, 46);
+            rbnMusic2.Margin = new Padding(3, 2, 3, 2);
             rbnMusic2.Name = "rbnMusic2";
-            rbnMusic2.Size = new Size(38, 24);
+            rbnMusic2.Size = new Size(31, 19);
             rbnMusic2.TabIndex = 1;
             rbnMusic2.Text = "2";
             rbnMusic2.UseVisualStyleBackColor = true;
@@ -176,9 +176,10 @@
             // 
             rbnMusic1.AutoSize = true;
             rbnMusic1.Checked = true;
-            rbnMusic1.Location = new Point(17, 31);
+            rbnMusic1.Location = new Point(15, 23);
+            rbnMusic1.Margin = new Padding(3, 2, 3, 2);
             rbnMusic1.Name = "rbnMusic1";
-            rbnMusic1.Size = new Size(38, 24);
+            rbnMusic1.Size = new Size(31, 19);
             rbnMusic1.TabIndex = 0;
             rbnMusic1.TabStop = true;
             rbnMusic1.Text = "1";
@@ -187,10 +188,10 @@
             // 
             // FrmMineSweeper
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(808, 600);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(707, 450);
+            Controls.Add(grpMusic);
             Controls.Add(btnExit);
             Controls.Add(label3);
             Controls.Add(btnUseReward);
@@ -200,11 +201,10 @@
             Controls.Add(lblTime);
             Controls.Add(label1);
             Controls.Add(pnlGame);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmMineSweeper";
             Text = "Minesweeper";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            grpMusic.ResumeLayout(false);
+            grpMusic.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,7 +221,7 @@
         private Button btnUseReward;
         private Label label3;
         private Button btnExit;
-        private GroupBox groupBox1;
+        private GroupBox grpMusic;
         private RadioButton rbnMusic3;
         private RadioButton rbnMusic2;
         private RadioButton rbnMusic1;
