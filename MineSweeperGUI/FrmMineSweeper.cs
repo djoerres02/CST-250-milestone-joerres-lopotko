@@ -383,6 +383,11 @@ namespace MineSweeperGUI
             this.Close();
         }
 
+        /// <summary>
+        /// Checked Changed EH for selecting background music 1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RbnMusic1CheckedChangedEH(object sender, EventArgs e)
         {
             //stop current music
@@ -391,6 +396,11 @@ namespace MineSweeperGUI
             boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
         }
 
+        /// <summary>
+        /// Checked Changed EH for selecting background music 2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RbnMusic2CheckedChangedEH(object sender, EventArgs e)
         {
             //stop current music
@@ -400,6 +410,11 @@ namespace MineSweeperGUI
 
         }
 
+        /// <summary>
+        /// Checked Changed EH for selecting background music 3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RbnMusic3CheckedChangedEH(object sender, EventArgs e)
         {
             //stop current music

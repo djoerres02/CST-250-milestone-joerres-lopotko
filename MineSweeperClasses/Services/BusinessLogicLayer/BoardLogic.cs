@@ -457,6 +457,10 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
            
         }
 
+        /// <summary>
+        /// Method to play the background music
+        /// </summary>
+        /// <param name="filePath"></param>
         public void PlayBackgroundMusic(string filePath)
         {
             try
@@ -476,12 +480,16 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
 
                 backgroundPlayer.Play();
             }
+            // Catch exceptions
             catch (Exception ex)
             {
                 Console.WriteLine($"Error playing background music: {ex.Message}");
             }
         }
 
+        /// <summary>
+        /// Method to stop the background music
+        /// </summary>
         public void StopMusic()
         {
             backgroundPlayer.Stop();
