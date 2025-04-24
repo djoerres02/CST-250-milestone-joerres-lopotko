@@ -160,7 +160,7 @@
             rbnMusic3.TabIndex = 2;
             rbnMusic3.Text = "3";
             rbnMusic3.UseVisualStyleBackColor = true;
-            rbnMusic3.CheckedChanged += RbnMusic3CheckedChangedEH;
+            rbnMusic3.CheckedChanged += RbnMusicCheckedChangedEH;
             // 
             // rbnMusic2
             // 
@@ -172,7 +172,7 @@
             rbnMusic2.TabIndex = 1;
             rbnMusic2.Text = "2";
             rbnMusic2.UseVisualStyleBackColor = true;
-            rbnMusic2.CheckedChanged += RbnMusic2CheckedChangedEH;
+            rbnMusic2.CheckedChanged += RbnMusicCheckedChangedEH;
             // 
             // rbnMusicOff
             // 
@@ -184,7 +184,7 @@
             rbnMusicOff.TabIndex = 0;
             rbnMusicOff.Text = "Off";
             rbnMusicOff.UseVisualStyleBackColor = true;
-            rbnMusicOff.CheckedChanged += RbnMusicOffCheckedChangedEH;
+            rbnMusicOff.CheckedChanged += RbnMusicCheckedChangedEH;
             // 
             // rbnMusic1
             // 
@@ -198,7 +198,7 @@
             rbnMusic1.TabStop = true;
             rbnMusic1.Text = "1";
             rbnMusic1.UseVisualStyleBackColor = true;
-            rbnMusic1.CheckedChanged += RbnMusic1CheckedChangedEH;
+            rbnMusic1.CheckedChanged += RbnMusicCheckedChangedEH;
             // 
             // FrmMineSweeper
             // 

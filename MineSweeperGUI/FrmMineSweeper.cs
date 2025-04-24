@@ -314,6 +314,8 @@ namespace MineSweeperGUI
         /// </summary>
         private void ResetBoard()
         {
+            // Stop the music, preventing duplicate music
+            boardLogic.StopMusic();
             // Ensure time is stopped
             tmrStopWatch.Stop();
             // Ensure gameOn is set to false, so we can correctly start the timer
@@ -432,6 +434,39 @@ namespace MineSweeperGUI
         {
             // Stop current music
             boardLogic.StopMusic();
+        }
+
+        /// <summary>
+        /// Checked Changed EH for changing music
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RbnMusicCheckedChangedEH(object sender, EventArgs e)
+        {
+            // Ensure music is stopped
+            boardLogic.StopMusic();
+
+            // If statement checking for the sender type and if the radio button sender is checked
+            if (sender is RadioButton radioButton && radioButton.Checked)
+            {
+                // Switch statement based off of radio button name
+                // Plays the respective music
+                switch (radioButton.Name)
+                {
+                    case "rbnMusic1":
+                        boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
+                        break;
+                    case "rbnMusic2":
+                        boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music2.mp3"));
+                        break;
+                    case "rbnMusic3":
+                        boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music3.mp3"));
+                        break;
+                    default:
+                        // Assume rbnMusicOff is selected, music is already stopped above
+                        break;
+                }
+            }
         }
     }
 }
