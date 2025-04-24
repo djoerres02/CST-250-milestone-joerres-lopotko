@@ -347,6 +347,8 @@ namespace MineSweeperGUI
             timeSpan = TimeSpan.Zero;
             // Update the timer label
             lblTime.Text = timeSpan.ToString();
+            // Play the current selected music
+            PlaySelectedMusic();
             //finally, update the board
             UpdateButtons();
         }
@@ -395,12 +397,8 @@ namespace MineSweeperGUI
             // Ensure music is stopped
             boardLogic.StopMusic();
 
-            // If statement checking for the sender type and if the radio button sender is checked
-            if (sender is RadioButton radioButton && radioButton.Checked)
-            {
-                // Play the current selectedm usic
-                PlaySelectedMusic();
-            }
+            // Play selected music
+            PlaySelectedMusic();
         }
 
         /// <summary>
