@@ -386,57 +386,6 @@ namespace MineSweeperGUI
         }
 
         /// <summary>
-        /// Checked Changed EH for selecting background music 1
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RbnMusic1CheckedChangedEH(object sender, EventArgs e)
-        {
-            //stop current music
-            boardLogic.StopMusic();
-            //play music 1
-            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
-        }
-
-        /// <summary>
-        /// Checked Changed EH for selecting background music 2
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RbnMusic2CheckedChangedEH(object sender, EventArgs e)
-        {
-            //stop current music
-            boardLogic.StopMusic();
-            //play music 2
-            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music2.mp3"));
-
-        }
-
-        /// <summary>
-        /// Checked Changed EH for selecting background music 3
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RbnMusic3CheckedChangedEH(object sender, EventArgs e)
-        {
-            //stop current music
-            boardLogic.StopMusic();
-            //play music 3
-            boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music3.mp3"));
-        }
-
-        /// <summary>
-        /// Checked Changed EH for turning music off
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RbnMusicOffCheckedChangedEH(object sender, EventArgs e)                                                                      
-        {
-            // Stop current music
-            boardLogic.StopMusic();
-        }
-
-        /// <summary>
         /// Checked Changed EH for changing music
         /// </summary>
         /// <param name="sender"></param>
