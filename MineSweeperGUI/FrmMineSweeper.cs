@@ -398,23 +398,29 @@ namespace MineSweeperGUI
             // If statement checking for the sender type and if the radio button sender is checked
             if (sender is RadioButton radioButton && radioButton.Checked)
             {
-                // Switch statement based off of radio button name
-                // Plays the respective music
-                switch (radioButton.Name)
-                {
-                    case "rbnMusic1":
-                        boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
-                        break;
-                    case "rbnMusic2":
-                        boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music2.mp3"));
-                        break;
-                    case "rbnMusic3":
-                        boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music3.mp3"));
-                        break;
-                    default:
-                        // Assume rbnMusicOff is selected, music is already stopped above
-                        break;
-                }
+                // Play the current selectedm usic
+                PlaySelectedMusic();
+            }
+        }
+
+        /// <summary>
+        /// Method to play selected music
+        /// </summary>
+        private void PlaySelectedMusic()
+        {
+            // If statements to find checked radio buttons
+            // and play their respective music
+            if (rbnMusic1.Checked)
+            {
+                boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music1.mp3"));
+            }
+            else if (rbnMusic2.Checked)
+            {
+                boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music2.mp3"));
+            }
+            else if (rbnMusic3.Checked)
+            {
+                boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music3.mp3"));
             }
         }
     }
