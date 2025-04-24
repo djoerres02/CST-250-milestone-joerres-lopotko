@@ -422,5 +422,16 @@ namespace MineSweeperGUI
             //play music 3
             boardLogic.PlayBackgroundMusic(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Audio", "music3.mp3"));
         }
+
+        /// <summary>
+        /// Checked Changed EH for turning music off
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RbnMusicOffCheckedChangedEH(object sender, EventArgs e)                                                                      
+        {
+            // Stop current music
+            boardLogic.StopMusic();
+        }
     }
 }

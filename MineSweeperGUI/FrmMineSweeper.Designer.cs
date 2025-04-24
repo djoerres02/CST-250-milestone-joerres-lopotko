@@ -42,6 +42,7 @@
             grpMusic = new GroupBox();
             rbnMusic3 = new RadioButton();
             rbnMusic2 = new RadioButton();
+            rbnMusicOff = new RadioButton();
             rbnMusic1 = new RadioButton();
             grpMusic.SuspendLayout();
             SuspendLayout();
@@ -138,12 +139,13 @@
             // 
             grpMusic.Controls.Add(rbnMusic3);
             grpMusic.Controls.Add(rbnMusic2);
+            grpMusic.Controls.Add(rbnMusicOff);
             grpMusic.Controls.Add(rbnMusic1);
-            grpMusic.Location = new Point(590, 318);
+            grpMusic.Location = new Point(576, 318);
             grpMusic.Margin = new Padding(3, 2, 3, 2);
             grpMusic.Name = "grpMusic";
             grpMusic.Padding = new Padding(3, 2, 3, 2);
-            grpMusic.Size = new Size(57, 94);
+            grpMusic.Size = new Size(70, 121);
             grpMusic.TabIndex = 6;
             grpMusic.TabStop = false;
             grpMusic.Text = "Music";
@@ -151,7 +153,7 @@
             // rbnMusic3
             // 
             rbnMusic3.AutoSize = true;
-            rbnMusic3.Location = new Point(15, 68);
+            rbnMusic3.Location = new Point(15, 87);
             rbnMusic3.Margin = new Padding(3, 2, 3, 2);
             rbnMusic3.Name = "rbnMusic3";
             rbnMusic3.Size = new Size(31, 19);
@@ -163,7 +165,7 @@
             // rbnMusic2
             // 
             rbnMusic2.AutoSize = true;
-            rbnMusic2.Location = new Point(15, 46);
+            rbnMusic2.Location = new Point(15, 65);
             rbnMusic2.Margin = new Padding(3, 2, 3, 2);
             rbnMusic2.Name = "rbnMusic2";
             rbnMusic2.Size = new Size(31, 19);
@@ -172,11 +174,23 @@
             rbnMusic2.UseVisualStyleBackColor = true;
             rbnMusic2.CheckedChanged += RbnMusic2CheckedChangedEH;
             // 
+            // rbnMusicOff
+            // 
+            rbnMusicOff.AutoSize = true;
+            rbnMusicOff.Location = new Point(15, 20);
+            rbnMusicOff.Margin = new Padding(3, 2, 3, 2);
+            rbnMusicOff.Name = "rbnMusicOff";
+            rbnMusicOff.Size = new Size(42, 19);
+            rbnMusicOff.TabIndex = 0;
+            rbnMusicOff.Text = "Off";
+            rbnMusicOff.UseVisualStyleBackColor = true;
+            rbnMusicOff.CheckedChanged += RbnMusicOffCheckedChangedEH;
+            // 
             // rbnMusic1
             // 
             rbnMusic1.AutoSize = true;
             rbnMusic1.Checked = true;
-            rbnMusic1.Location = new Point(15, 23);
+            rbnMusic1.Location = new Point(15, 42);
             rbnMusic1.Margin = new Padding(3, 2, 3, 2);
             rbnMusic1.Name = "rbnMusic1";
             rbnMusic1.Size = new Size(31, 19);
@@ -225,5 +239,6 @@
         private RadioButton rbnMusic3;
         private RadioButton rbnMusic2;
         private RadioButton rbnMusic1;
+        private RadioButton rbnMusicOff;
     }
 }
