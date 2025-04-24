@@ -474,10 +474,17 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 // Loop the music
                 backgroundPlayer.PlaybackStopped += (s, e) =>
                 {
-                    backgroundReader.Position = 0;
-                    backgroundPlayer.Play();
+                    // Check if backgroundReader and backgroundPlayer aren't null
+                    if (backgroundReader != null && backgroundPlayer != null)
+                    {
+                        // Reset the reader's position
+                        backgroundReader.Position = 0;
+                        // Play the music
+                        backgroundPlayer.Play();
+                    }
                 };
 
+                // Play the music
                 backgroundPlayer.Play();
             }
             // Catch exceptions
@@ -492,7 +499,25 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         /// </summary>
         public void StopMusic()
         {
-            backgroundPlayer.Stop();
+            // Checks for a not null backgroundPlayer
+            if (backgroundPlayer != null)
+            {
+                // Stop the background player
+                backgroundPlayer.Stop();
+                // Release backgroundPlayer sources
+                backgroundPlayer.Dispose();
+                // Set backgroundPlayer to null
+                backgroundPlayer = null;
+            }
+            // Checks for a not null backgroundReader
+            if (backgroundReader != null)
+            {
+                // Release backgroundReader sources
+                backgroundReader.Dispose();
+                // Set backgroundReader to null
+                backgroundReader = null;
+            }
+            
         }
     }
 }
