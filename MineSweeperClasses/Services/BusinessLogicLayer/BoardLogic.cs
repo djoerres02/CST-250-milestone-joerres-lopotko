@@ -456,7 +456,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         {
             try
             {
-                // Dispose any old background music first
+                // Dispose of any old background music first
                 StopMusic();
 
                 // Initialize new player and reader
@@ -465,7 +465,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
 
                 backgroundPlayer.Init(backgroundReader);
 
-                // Loop the music
+                // When the music ends, we're going to replay it`   
                 backgroundPlayer.PlaybackStopped += (s, e) =>
                 {
                     // Check if backgroundReader and backgroundPlayer aren't null
