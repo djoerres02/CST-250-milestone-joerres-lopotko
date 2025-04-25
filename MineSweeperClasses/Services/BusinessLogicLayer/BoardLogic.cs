@@ -24,9 +24,6 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
     {
         // Class level variables
         private BoardDAO _boardDAO = new BoardDAO();
-        // Lists to contain audio players and readers
-        private List<IWavePlayer> players = new List<IWavePlayer>();
-        private List<AudioFileReader> readers = new List<AudioFileReader>();
         //player and reader object for background music
         AudioFileReader backgroundReader;
         IWavePlayer backgroundPlayer;
@@ -435,9 +432,13 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 player.Init(reader);
                 player.Play();
 
-                // Add the player and reader to the players and readers list
-                players.Add(player);
-                readers.Add(reader);
+                // When the audio stops playing, dispose of the reader and player
+                // preventing memory buildup
+                player.PlaybackStopped += (s, e) =>
+                {
+                    player.Dispose();
+                    reader.Dispose();
+                };
             }
             // Catching for if the audio isn't found
             catch (Exception ex)
