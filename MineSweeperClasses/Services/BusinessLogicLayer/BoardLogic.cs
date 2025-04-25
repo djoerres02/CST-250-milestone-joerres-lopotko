@@ -55,7 +55,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         }
 
         /// <summary>
-        /// Used when player selects a cell and chooses to play the rewards(implement later)
+        /// Used when player selects a cell and chooses to play the rewards
         /// </summary>
         public void UseSpecialBonus()
         {
@@ -87,15 +87,6 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Use after game is over to calculate final score(Implemented later)
-        /// </summary>
-        /// <returns></returns>
-        public int DetermineFinalScore()
-        {
-            return 0;//placeholder
         }
 
         /// <summary>
