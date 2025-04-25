@@ -25,8 +25,8 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         // Class level variables
         private BoardDAO _boardDAO = new BoardDAO();
         // Lists to contain audio players and readers
-        private List<IWavePlayer> players = new();
-        private List<AudioFileReader> readers = new();
+        private List<IWavePlayer> players = new List<IWavePlayer>();
+        private List<AudioFileReader> readers = new List<AudioFileReader>();
         //player and reader object for background music
         AudioFileReader backgroundReader;
         IWavePlayer backgroundPlayer;
@@ -454,7 +454,6 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
                 // Log an error
                 Console.WriteLine($"Error Playing Audio: {ex.Message}");
             }
-           
         }
 
         /// <summary>
@@ -504,7 +503,7 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             {
                 // Stop the background player
                 backgroundPlayer.Stop();
-                // Release backgroundPlayer sources
+                // Release backgroundPlayer resources
                 backgroundPlayer.Dispose();
                 // Set backgroundPlayer to null
                 backgroundPlayer = null;
@@ -512,12 +511,11 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
             // Checks for a not null backgroundReader
             if (backgroundReader != null)
             {
-                // Release backgroundReader sources
+                // Release backgroundReader resources
                 backgroundReader.Dispose();
                 // Set backgroundReader to null
                 backgroundReader = null;
             }
-            
         }
     }
 }
