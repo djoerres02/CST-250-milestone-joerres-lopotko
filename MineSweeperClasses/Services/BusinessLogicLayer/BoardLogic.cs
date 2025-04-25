@@ -456,6 +456,9 @@ namespace MineSweeperClasses.Services.BusinessLogicLayer
         {
             try
             {
+                // Dispose any old background music first
+                StopMusic();
+
                 // Initialize new player and reader
                 backgroundReader = new AudioFileReader(filePath);
                 backgroundPlayer = new WaveOutEvent();
